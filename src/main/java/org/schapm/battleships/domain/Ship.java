@@ -8,10 +8,16 @@ public abstract class Ship {
 
     private final String name;
     private final int length;
+    private final Orientation orientation;
+
+    public enum Orientation {
+        HORIZONTAL, VERTICAL
+    }
 
     public Ship(String name, int length) {
         this.name = name;
         this.length = length;
+        this.orientation = Orientation.HORIZONTAL;
     }
 
     public String getName() {
@@ -21,4 +27,9 @@ public abstract class Ship {
     public int getLength() {
         return this.length;
     }
+
+    public Orientation getOrientation() {
+        return this.orientation;
+    }
+
 }
