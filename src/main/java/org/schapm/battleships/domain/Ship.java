@@ -1,5 +1,6 @@
 package org.schapm.battleships.domain;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -11,6 +12,7 @@ public abstract class Ship {
     private final String name;
     private final int length;
     private final Orientation orientation;
+    private final ArrayList<Coordinate> coordinates;
 
     public enum Orientation {
         HORIZONTAL, VERTICAL
@@ -20,6 +22,7 @@ public abstract class Ship {
         this.name = name;
         this.length = length;
         this.orientation = randomOrientation();
+        this.coordinates = new ArrayList<>();
     }
 
     private Orientation randomOrientation() {
@@ -48,4 +51,7 @@ public abstract class Ship {
         return this.orientation;
     }
 
+    public ArrayList<Coordinate> getCoordinates() {
+        return this.coordinates;
+    }
 }
