@@ -61,4 +61,10 @@ public class ShipTest {
         assertTrue(set.contains(Ship.Orientation.HORIZONTAL) && set.contains(Ship.Orientation.VERTICAL), "Ship doesn't contain both horizontal and vertical orientations");
     }
 
+    @Test
+    public void shipsCanHaveAListOfGridCoordinates() {
+        assertNotNull(battleship.getCoordinates(), battleship.getName() + " coordinates should not be null");
+        assertNotNull(destroyer.getCoordinates(), destroyer.getName() + " coordinates should not be null");
+    }
+
 }
