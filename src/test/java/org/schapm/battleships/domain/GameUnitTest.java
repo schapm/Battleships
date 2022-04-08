@@ -3,6 +3,7 @@ package org.schapm.battleships.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameUnitTest {
 
     private final static int EXPECTED_OCEAN_SIZE = 10;
+    private final static int EXPECTED_SHIPS_SIZE = 3;
 
     GameUnit gameUnit;
 
@@ -39,6 +41,12 @@ public class GameUnitTest {
 
         assertNotNull(gameUnit.getGuesses()[0][0]);
         assertNotNull(gameUnit.getGuesses()[EXPECTED_OCEAN_SIZE -1 ][EXPECTED_OCEAN_SIZE - 1]);
+    }
+
+    @Test
+    public void gameUnitCreatesCorrectNumberOfShips() {
+        ArrayList<Ship> ships = gameUnit.getShips();
+        assertEquals(EXPECTED_SHIPS_SIZE, ships.size(), "Expected a size of " + EXPECTED_SHIPS_SIZE + " for ships. Instead, it is " + ships.size());
     }
 
 }
