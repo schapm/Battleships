@@ -1,5 +1,7 @@
 package org.schapm.battleships.domain;
 
+import java.util.Random;
+
 /**
  * @author schapm
  */
@@ -17,7 +19,17 @@ public abstract class Ship {
     public Ship(String name, int length) {
         this.name = name;
         this.length = length;
-        this.orientation = Orientation.HORIZONTAL;
+        this.orientation = randomOrientation();
+    }
+
+    private Orientation randomOrientation() {
+        Random random = new Random();
+        int rand = random.nextInt(2);
+        if (rand == 0) {
+            return Orientation.HORIZONTAL;
+        } else {
+            return Orientation.VERTICAL;
+        }
     }
 
     public String getName() {
