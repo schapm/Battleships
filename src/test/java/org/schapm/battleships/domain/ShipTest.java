@@ -37,4 +37,10 @@ public class ShipTest {
         assertTrue(destroyer.getOrientation().equals(Ship.Orientation.HORIZONTAL) || destroyer.getOrientation().equals(Ship.Orientation.VERTICAL), destroyer.getName() + " doesn't have a horizontal or vertical orientation");
     }
 
+    @Test
+    public void shipsHaveCorrectInitial() {
+        assertSame("B", String.valueOf(battleship.getNameInitial()), battleship.getName() + " does not have the correct initial of 'B'");
+        assertSame("D", String.valueOf(destroyer.getNameInitial()), destroyer.getName() + " does not have the correct initial of 'D'");
+    }
+
 }
