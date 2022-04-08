@@ -17,6 +17,9 @@ public class PlayerTest {
     public void setupClass() {
         humanPlayer = new HumanPlayer(HUMAN_PLAYER_NAME);
         computerPlayer = new ComputerPlayer(COMPUTER_PLAYER_NAME);
+
+        humanPlayer.setOpponent(computerPlayer);
+        computerPlayer.setOpponent(humanPlayer);
     }
 
     @Test
@@ -34,6 +37,17 @@ public class PlayerTest {
         assertNotNull(computerPlayer.getGameUnit(), COMPUTER_PLAYER_NAME + " GameUnit should not be null");
 
         assertNotEquals(humanPlayer.getGameUnit(), computerPlayer.getGameUnit(), HUMAN_PLAYER_NAME + " and " + COMPUTER_PLAYER_NAME + " GameUnit should not be the same");
+    }
+
+    @Test
+    public void getAndSetPlayersOpponent() {
+        ComputerPlayer testComputerPlayer = new ComputerPlayer("TestComputerPlayer");
+        HumanPlayer testHumanPlayer = new HumanPlayer("TestHumanPlayer");
+
+        humanPlayer.setOpponent(testComputerPlayer);
+        assertSame(testComputerPlayer, humanPlayer.getOpponent(), testComputerPlayer.getName() + " and " + humanPlayer.getName() + " getOpponent() should be the same");
+        computerPlayer.setOpponent(testHumanPlayer);
+        assertSame(testHumanPlayer, computerPlayer.getOpponent(), testHumanPlayer.getName() + " and " + computerPlayer.getName() + " getOpponent() should be the same");
     }
 
 }
