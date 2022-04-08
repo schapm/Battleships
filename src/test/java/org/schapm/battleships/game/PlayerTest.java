@@ -28,4 +28,12 @@ public class PlayerTest {
         assertEquals(computerPlayer.getName(), COMPUTER_PLAYER_NAME, COMPUTER_PLAYER_NAME + " and getName() are not the same");
     }
 
+    @Test
+    public void playersHaveOwnGameUnit() {
+        assertNotNull(humanPlayer.getGameUnit(), HUMAN_PLAYER_NAME + " GameUnit should not be null");
+        assertNotNull(computerPlayer.getGameUnit(), COMPUTER_PLAYER_NAME + " GameUnit should not be null");
+
+        assertNotEquals(humanPlayer.getGameUnit(), computerPlayer.getGameUnit(), HUMAN_PLAYER_NAME + " and " + COMPUTER_PLAYER_NAME + " GameUnit should not be the same");
+    }
+
 }
