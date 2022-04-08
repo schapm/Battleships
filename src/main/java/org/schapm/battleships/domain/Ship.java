@@ -24,6 +24,10 @@ public abstract class Ship {
         return this.name;
     }
 
+    public char getNameInitial() {
+        return this.name.charAt(0);
+    }
+
     public int getLength() {
         return this.length;
     }
