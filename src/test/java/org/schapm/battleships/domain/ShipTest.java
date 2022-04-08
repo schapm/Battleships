@@ -3,6 +3,9 @@ package org.schapm.battleships.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShipTest {
@@ -41,6 +44,21 @@ public class ShipTest {
     public void shipsHaveCorrectInitial() {
         assertEquals("B", String.valueOf(battleship.getNameInitial()), battleship.getName() + " does not have the correct initial of 'B'");
         assertEquals("D", String.valueOf(destroyer.getNameInitial()), destroyer.getName() + " does not have the correct initial of 'D'");
+    }
+
+    @Test
+    public void shipsHaveRandomOrientation() {
+        Set<Ship.Orientation> set = new HashSet<>();
+        for (int i = 0; i < 10; i++) {
+            Ship b = new Battleship();
+            Ship d = new Destroyer();
+
+            set.add(d.getOrientation());
+            set.add(b.getOrientation());
+
+            assertEquals(2, set.size(), "Didn't find two orientations");
+            assertTrue(set.contains(Ship.Orientation.HORIZONTAL) && set.contains(Ship.Orientation.VERTICAL), "Ship doesn't contain both horizontal and vertical orientations");
+        }
     }
 
 }
