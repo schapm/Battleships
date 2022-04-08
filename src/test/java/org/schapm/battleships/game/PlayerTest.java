@@ -15,12 +15,15 @@ public class PlayerTest {
 
     @BeforeEach
     public void setupClass() {
-        humanPlayer = new HumanPlayer();
-        computerPlayer = new ComputerPlayer();
+        humanPlayer = new HumanPlayer(HUMAN_PLAYER_NAME);
+        computerPlayer = new ComputerPlayer(COMPUTER_PLAYER_NAME);
     }
 
     @Test
     public void playersHaveAName() {
+        assertFalse(humanPlayer.getName().isEmpty(), "HumanPlayer name should not be empty");
+        assertFalse(computerPlayer.getName().isEmpty(), "ComputerPlayer name should not be empty");
+
         assertEquals(humanPlayer.getName(), HUMAN_PLAYER_NAME, HUMAN_PLAYER_NAME + " and getName() are not the same");
         assertEquals(computerPlayer.getName(), COMPUTER_PLAYER_NAME, COMPUTER_PLAYER_NAME + " and getName() are not the same");
     }
