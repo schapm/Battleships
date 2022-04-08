@@ -55,10 +55,10 @@ public class ShipTest {
 
             set.add(d.getOrientation());
             set.add(b.getOrientation());
-
-            assertEquals(2, set.size(), "Didn't find two orientations");
-            assertTrue(set.contains(Ship.Orientation.HORIZONTAL) && set.contains(Ship.Orientation.VERTICAL), "Ship doesn't contain both horizontal and vertical orientations");
         }
+
+        assertEquals(2, set.size(), "Didn't find two orientations");
+        assertTrue(set.contains(Ship.Orientation.HORIZONTAL) && set.contains(Ship.Orientation.VERTICAL), "Ship doesn't contain both horizontal and vertical orientations");
     }
 
 }
