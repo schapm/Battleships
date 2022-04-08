@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class GameUnit {
 
     public final static int OCEAN_SIZE = 10;
+    public final static int NUM_OF_BATTLESHIPS = 2;
+    public final static int NUM_OF_DESTROYERS = 1;
 
     private final Coordinate[][] ocean;
     private final Coordinate[][] guesses;
@@ -25,9 +27,14 @@ public class GameUnit {
     }
 
     private void createShips() {
-        for (int i = 0; i < 3; i++) {
-            Ship ship = new Destroyer();
-            ships.add(ship);
+        for (int i = 0; i < NUM_OF_BATTLESHIPS; i++) {
+            Battleship battleship = new Battleship();
+            ships.add(battleship);
+        }
+
+        for (int i = 0; i < NUM_OF_DESTROYERS; i++) {
+            Destroyer destroyer = new Destroyer();
+            ships.add(destroyer);
         }
     }
 
