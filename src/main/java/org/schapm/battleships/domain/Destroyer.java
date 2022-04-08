@@ -6,7 +6,10 @@ package org.schapm.battleships.domain;
 
 public class Destroyer extends Ship {
 
-    public Destroyer(String name, int length) {
-        super(name, length);
+    private final static String NAME = "Destroyer";
+    private final static int LENGTH = 4;
+
+    public Destroyer() {
+        super(NAME, LENGTH);
     }
 }
