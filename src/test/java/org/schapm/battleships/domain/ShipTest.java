@@ -39,8 +39,8 @@ public class ShipTest {
 
     @Test
     public void shipsHaveCorrectInitial() {
-        assertSame("B", String.valueOf(battleship.getNameInitial()), battleship.getName() + " does not have the correct initial of 'B'");
-        assertSame("D", String.valueOf(destroyer.getNameInitial()), destroyer.getName() + " does not have the correct initial of 'D'");
+        assertEquals("B", String.valueOf(battleship.getNameInitial()), battleship.getName() + " does not have the correct initial of 'B'");
+        assertEquals("D", String.valueOf(destroyer.getNameInitial()), destroyer.getName() + " does not have the correct initial of 'D'");
     }
 
 }
