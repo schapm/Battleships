@@ -41,7 +41,7 @@ public class GameUnit {
     private void setupGrid(Coordinate[][] grid) {
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid.length; col++) {
-                grid[row][col] = new Coordinate();
+                grid[row][col] = new Coordinate(row, col);
             }
         }
     }
