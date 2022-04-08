@@ -8,12 +8,15 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ShipTest {
 
     private final static int EXPECTED_BATTLESHIP_LENGTH = 5;
+    private final static int EXPECTED_DESTROYER_LENGTH = 4;
 
     Battleship battleship;
+    Destroyer destroyer;
 
     @BeforeEach
     public void setupShips() {
         battleship = new Battleship();
+        destroyer = new Destroyer();
     }
 
     @Test
@@ -22,4 +25,9 @@ public class ShipTest {
         assertEquals("battleship", battleship.getName().toLowerCase(), "Battleship name should be 'Battleship'. Instead, it is " + battleship.getName());
     }
 
+    @Test
+    public void destroyerIsCorrectLengthAndHasCorrectName() {
+        assertEquals(EXPECTED_DESTROYER_LENGTH, destroyer.getLength(), "Destroyer should be of length " + EXPECTED_DESTROYER_LENGTH + ". Instead, it is " + destroyer.getLength());
+        assertEquals("destroyer", destroyer.getName().toLowerCase(), "Destroyer name should be 'Destroyer'. Instead, it is " + destroyer.getName());
+    }
 }
