@@ -3,6 +3,8 @@ package org.schapm.battleships.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameUnitTest {
@@ -28,6 +30,15 @@ public class GameUnitTest {
     public void gameUnitOceanAndGuessesGridsAreTheCorrectSize() {
         assertEquals(EXPECTED_OCEAN_SIZE, gameUnit.getOcean().length, "Ocean grid should be of length " + EXPECTED_OCEAN_SIZE + ". Instead, it is " + gameUnit.getOcean().length);
         assertEquals(EXPECTED_OCEAN_SIZE, gameUnit.getGuesses().length, "Guesses grid should be of length " + EXPECTED_OCEAN_SIZE + ". Instead, it is " + gameUnit.getGuesses().length);
+    }
+
+    @Test
+    public void gameUnitOceanAndGuessesGridsAreMultiDimensionalAndNotNull() {
+        assertNotNull(gameUnit.getOcean()[0][0]);
+        assertNotNull(gameUnit.getOcean()[EXPECTED_OCEAN_SIZE -1 ][EXPECTED_OCEAN_SIZE - 1]);
+
+        assertNotNull(gameUnit.getGuesses()[0][0]);
+        assertNotNull(gameUnit.getGuesses()[EXPECTED_OCEAN_SIZE -1 ][EXPECTED_OCEAN_SIZE - 1]);
     }
 
 }
