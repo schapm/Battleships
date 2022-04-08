@@ -30,4 +30,11 @@ public class ShipTest {
         assertEquals(EXPECTED_DESTROYER_LENGTH, destroyer.getLength(), "Destroyer should be of length " + EXPECTED_DESTROYER_LENGTH + ". Instead, it is " + destroyer.getLength());
         assertEquals("destroyer", destroyer.getName().toLowerCase(), "Destroyer name should be 'Destroyer'. Instead, it is " + destroyer.getName());
     }
+
+    @Test
+    public void shipsHaveEitherHorizontalOrVerticalOrientation() {
+        assertTrue(battleship.getOrientation().equals(Ship.Orientation.HORIZONTAL) || battleship.getOrientation().equals(Ship.Orientation.VERTICAL), battleship.getName() + " doesn't have a horizontal or vertical orientation");
+        assertTrue(destroyer.getOrientation().equals(Ship.Orientation.HORIZONTAL) || destroyer.getOrientation().equals(Ship.Orientation.VERTICAL), destroyer.getName() + " doesn't have a horizontal or vertical orientation");
+    }
+
 }
