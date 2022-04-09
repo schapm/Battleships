@@ -19,4 +19,10 @@ public class CoordinateTest {
         assertEquals(0, coordinate.getX(), "Expected X-value of " + 0 + ". Instead, it is " + coordinate.getX());
         assertEquals(5, coordinate.getY(), "Expected Y-value of " + 5 + ". Instead, it is " + coordinate.getY());
     }
+
+    @Test
+    public void coordinateHasADefaultValueOfEmpty() {
+        assertEquals(Coordinate.EMPTY, coordinate.getValue(), "Coordinate did not have an 'EMPTY' value when created");
+    }
+
 }
