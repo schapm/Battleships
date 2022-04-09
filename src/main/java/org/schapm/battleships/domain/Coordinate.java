@@ -11,6 +11,7 @@ public class Coordinate {
     public final static String EMPTY = " ";
 
     private String value;
+    private Ship ship;
 
     private final int x;
     private final int y;
@@ -27,6 +28,14 @@ public class Coordinate {
 
     public void setValue(String state) {
         this.value = state;
+    }
+
+    public Ship getShip() {
+        return this.ship;
+    }
+
+    public void setShip(Ship ship) {
+        this.ship = ship;
     }
 
     public int getX() {
