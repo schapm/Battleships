@@ -38,6 +38,10 @@ public class Coordinate {
         this.ship = ship;
     }
 
+    public boolean hasShip() {
+        return ship != null;
+    }
+
     public int getX() {
         return this.x;
     }
