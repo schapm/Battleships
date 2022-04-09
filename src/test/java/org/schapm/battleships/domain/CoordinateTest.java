@@ -38,4 +38,13 @@ public class CoordinateTest {
         assertEquals(String.valueOf(destroyer.getNameInitial()), coordinate.getValue(), "After setting the coordinate value to destroyer ship initial 'D', it does not have the same value");
     }
 
+    @Test
+    public void coordinateCanHaveAShip() {
+        Battleship battleship = new Battleship();
+        coordinate.setShip(battleship);
+
+        assertNotNull(coordinate.getShip(), "Coordinate ship should not be null");
+        assertSame(battleship, coordinate.getShip(), "Ship is not the same as the ship set on the coordinate");
+    }
+
 }
