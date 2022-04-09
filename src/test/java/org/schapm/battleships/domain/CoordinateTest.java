@@ -25,4 +25,17 @@ public class CoordinateTest {
         assertEquals(Coordinate.EMPTY, coordinate.getValue(), "Coordinate did not have an 'EMPTY' value when created");
     }
 
+    @Test
+    public void coordinateCanHaveAValueOfHitMissOrShipInitial() {
+        coordinate.setValue(Coordinate.HIT);
+        assertEquals(Coordinate.HIT, coordinate.getValue(), "After setting the coordinate value to 'HIT', it does not have the same value");
+
+        coordinate.setValue(Coordinate.MISS);
+        assertEquals(Coordinate.MISS, coordinate.getValue(), "After setting the coordinate value to 'MISS', it does not have the same value");
+
+        Destroyer destroyer = new Destroyer();
+        coordinate.setValue(String.valueOf(destroyer.getNameInitial()));
+        assertEquals(String.valueOf(destroyer.getNameInitial()), coordinate.getValue(), "After setting the coordinate value to destroyer ship initial 'D', it does not have the same value");
+    }
+
 }
