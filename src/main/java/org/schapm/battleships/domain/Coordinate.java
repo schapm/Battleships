@@ -6,6 +6,8 @@ package org.schapm.battleships.domain;
 
 public class Coordinate {
 
+    public final static String HIT = "X";
+    public final static String MISS = "O";
     public final static String EMPTY = " ";
 
     private String value;
@@ -21,6 +23,10 @@ public class Coordinate {
 
     public String getValue() {
         return this.value;
+    }
+
+    public void setValue(String state) {
+        this.value = state;
     }
 
     public int getX() {
