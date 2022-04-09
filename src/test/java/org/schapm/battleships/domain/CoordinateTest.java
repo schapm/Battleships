@@ -47,4 +47,12 @@ public class CoordinateTest {
         assertSame(battleship, coordinate.getShip(), "Ship is not the same as the ship set on the coordinate");
     }
 
+    @Test
+    public void coordinateReturnsStatusOfShip() {
+        assertFalse(coordinate.hasShip(), "Coordinate should return false when no ship has been set");
+        
+        coordinate.setShip(new Battleship());
+        assertTrue(coordinate.hasShip(), "Coordinate should return true after the ship has been set");
+    }
+
 }
