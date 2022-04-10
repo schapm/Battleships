@@ -81,4 +81,13 @@ public class GameUnitTest {
         }
     }
 
+    @Test
+    public void gameUnitAssignsCreatedShipsWithMultipleCoordinates() {
+        ArrayList<Ship> ships = gameUnit.getShips();
+
+        for (Ship ship : ships) {
+            assertTrue(ship.getCoordinates().size() > 1, "Ship should have multiple coordinates");
+        }
+    }
+
 }
