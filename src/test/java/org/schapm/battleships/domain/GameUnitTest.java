@@ -72,4 +72,13 @@ public class GameUnitTest {
         assertEquals(EXPECTED_NUM_OF_DESTROYERS, destroyers, "Expected " + EXPECTED_NUM_OF_DESTROYERS + " destroyers. Instead, it is " + destroyers);
     }
 
+    @Test
+    public void gameUnitAssignsCreatedShipsWithCoordinate() {
+        ArrayList<Ship> ships = gameUnit.getShips();
+
+        for (Ship ship : ships) {
+            assertNotEquals(0, ship.getCoordinates().size(), "Coordinates for ship should not have a size of zero");
+        }
+    }
+
 }
