@@ -34,7 +34,7 @@ public class CoordinateTest {
         assertEquals(Coordinate.MISS, coordinate.getValue(), "After setting the coordinate value to 'MISS', it does not have the same value");
 
         Destroyer destroyer = new Destroyer();
-        coordinate.setValue(String.valueOf(destroyer.getNameInitial()));
+        coordinate.setValue(destroyer.getNameInitial());
         assertEquals(String.valueOf(destroyer.getNameInitial()), coordinate.getValue(), "After setting the coordinate value to destroyer ship initial 'D', it does not have the same value");
     }
 
