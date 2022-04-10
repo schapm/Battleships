@@ -39,6 +39,13 @@ public class CoordinateTest {
     }
 
     @Test
+    public void coordinateCantHaveAValueOfAnythingOtherThanHitMissEmptyOrShipInitial() {
+        String shouldNotBeSet = "Test";
+        coordinate.setValue(shouldNotBeSet);
+        assertNotEquals(shouldNotBeSet, coordinate.getValue(), "Value should not be the same as the test string");
+    }
+
+    @Test
     public void coordinateCanHaveAShip() {
         Battleship battleship = new Battleship();
         coordinate.setShip(battleship);
@@ -50,7 +57,7 @@ public class CoordinateTest {
     @Test
     public void coordinateReturnsStatusOfShip() {
         assertFalse(coordinate.hasShip(), "Coordinate should return false when no ship has been set");
-        
+
         coordinate.setShip(new Battleship());
         assertTrue(coordinate.hasShip(), "Coordinate should return true after the ship has been set");
     }
