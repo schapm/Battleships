@@ -40,8 +40,9 @@ public class GameUnit {
     }
 
     private void setShipCoordinates() throws NullPointerException {
+        Coordinate[] coordinates = {new Coordinate(0, 0), new Coordinate(1, 0)};
         for (Ship ship : ships) {
-            ship.addCoordinate(new Coordinate(0, 0));
+            ship.addCoordinates(coordinates);
         }
     }
 

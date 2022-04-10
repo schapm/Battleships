@@ -1,6 +1,7 @@
 package org.schapm.battleships.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -58,5 +59,9 @@ public abstract class Ship {
     public void addCoordinate(Coordinate coordinate) {
         this.coordinates.add(coordinate);
     }
-    
+
+    public void addCoordinates(Coordinate[] coordinates) {
+        this.coordinates.addAll(Arrays.asList(coordinates));
+    }
+
 }
