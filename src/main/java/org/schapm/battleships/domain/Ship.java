@@ -54,4 +54,9 @@ public abstract class Ship {
     public ArrayList<Coordinate> getCoordinates() {
         return this.coordinates;
     }
+
+    public void addCoordinate(Coordinate coordinate) {
+        this.coordinates.add(coordinate);
+    }
+    
 }

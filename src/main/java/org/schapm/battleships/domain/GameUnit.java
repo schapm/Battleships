@@ -24,6 +24,7 @@ public class GameUnit {
         setupGrid(guesses);
         this.ships = new ArrayList<>();
         createShips();
+        setShipCoordinates();
     }
 
     private void createShips() {
@@ -35,6 +36,12 @@ public class GameUnit {
         for (int i = 0; i < NUM_OF_DESTROYERS; i++) {
             Destroyer destroyer = new Destroyer();
             ships.add(destroyer);
+        }
+    }
+
+    private void setShipCoordinates() throws NullPointerException {
+        for (Ship ship : ships) {
+            ship.addCoordinate(new Coordinate(0, 0));
         }
     }
 
