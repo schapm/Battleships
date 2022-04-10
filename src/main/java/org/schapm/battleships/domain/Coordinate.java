@@ -27,7 +27,18 @@ public class Coordinate {
     }
 
     public void setValue(String state) {
-        this.value = state;
+        switch (state) {
+            case HIT:
+                this.value = HIT;
+                break;
+            case MISS:
+                this.value = MISS;
+                break;
+        }
+    }
+
+    public void setValue(char shipInitial) {
+        this.value = String.valueOf(shipInitial);
     }
 
     public Ship getShip() {
