@@ -2,6 +2,7 @@ package org.schapm.battleships.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.schapm.battleships.domain.Battleship;
 import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.Destroyer;
 
@@ -80,6 +81,15 @@ public class PlayerTest {
 
         coordinate.setShip(new Destroyer());
         assertEquals(Coordinate.HIT, computerPlayer.guessOutcome(coordinate), "Ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'HIT'");
+    }
+
+    @Test
+    public void playerGuessRecordsGuessOnOwnGameUnit() {
+        Coordinate coordinate = humanPlayer.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0); // Get ship coordinate on opponent GameUnit
+        humanPlayer.guessOutcome(coordinate);
+
+        assertEquals(Coordinate.HIT, humanPlayer.getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].getValue(),
+                HUMAN_PLAYER_NAME + " 'HIT' guess does not equal 'HIT' on " + HUMAN_PLAYER_NAME + " guesses grid");
     }
 
 }
