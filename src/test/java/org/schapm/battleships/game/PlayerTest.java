@@ -61,4 +61,14 @@ public class PlayerTest {
                         "Second: x=" + secondCoordinate.getX() + " y=" + secondCoordinate.getY());
     }
 
+    @Test
+    public void computerPlayerGuessCorrespondsToOpponentOceanCoordinate() {
+        Coordinate guessCoordinate = computerPlayer.guess();
+        Coordinate oceanCoordinate = computerPlayer.getOpponent().getGameUnit().getOcean()[guessCoordinate.getX()][guessCoordinate.getY()];
+
+        assertNotNull(guessCoordinate, COMPUTER_PLAYER_NAME + " coordinate guess should not be null");
+        assertNotNull(oceanCoordinate, "Opponent ocean coordinate from " + COMPUTER_PLAYER_NAME + " guess should not null");
+        assertSame(oceanCoordinate, guessCoordinate, "Opponent ocean coordinate and guess coordinate should be the same");
+    }
+
 }
