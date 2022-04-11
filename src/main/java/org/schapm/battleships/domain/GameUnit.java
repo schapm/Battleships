@@ -26,6 +26,7 @@ public class GameUnit {
         this.ships = new ArrayList<>();
         createShips();
         setShipCoordinates();
+        setShipCoordinatesToShipInitial();
     }
 
     private void createShips() {
@@ -76,6 +77,12 @@ public class GameUnit {
             for (int col = 0; col < grid.length; col++) {
                 grid[row][col] = new Coordinate(row, col);
             }
+        }
+    }
+
+    private void setShipCoordinatesToShipInitial() {
+        for (Ship ship : ships) {
+            ship.getCoordinates().forEach(coordinate -> coordinate.setValue(ship.getNameInitial()));
         }
     }
 
