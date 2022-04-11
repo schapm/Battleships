@@ -3,6 +3,7 @@ package org.schapm.battleships.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.schapm.battleships.domain.Coordinate;
+import org.schapm.battleships.domain.Destroyer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,7 +56,7 @@ public class PlayerTest {
     public void computerPlayerGeneratesRandomGuess() {
         Coordinate firstCoordinate = computerPlayer.guess();
         Coordinate secondCoordinate = computerPlayer.guess();
-        
+
         assertTrue(firstCoordinate.getX() != secondCoordinate.getX() || firstCoordinate.getY() != secondCoordinate.getY(),
                 "Guesses should not be the same. First: x=" + firstCoordinate.getX() + " y=" + firstCoordinate.getY() +
                         "Second: x=" + secondCoordinate.getX() + " y=" + secondCoordinate.getY());
@@ -69,6 +70,16 @@ public class PlayerTest {
         assertNotNull(guessCoordinate, COMPUTER_PLAYER_NAME + " coordinate guess should not be null");
         assertNotNull(oceanCoordinate, "Opponent ocean coordinate from " + COMPUTER_PLAYER_NAME + " guess should not null");
         assertSame(oceanCoordinate, guessCoordinate, "Opponent ocean coordinate and guess coordinate should be the same");
+    }
+
+    @Test
+    public void playerGuessReturnsHitOrMiss() {
+        Coordinate coordinate = computerPlayer.guess();
+        coordinate.setShip(null);
+        assertEquals(Coordinate.MISS, computerPlayer.guessOutcome(coordinate), "No ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'MISS'");
+
+        coordinate.setShip(new Destroyer());
+        assertEquals(Coordinate.HIT, computerPlayer.guessOutcome(coordinate), "Ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'HIT'");
     }
 
 }
