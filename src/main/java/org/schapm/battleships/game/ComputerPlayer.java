@@ -20,7 +20,7 @@ public class ComputerPlayer extends Player {
         int x = random.nextInt(GameUnit.OCEAN_SIZE);
         int y = random.nextInt(GameUnit.OCEAN_SIZE);
 
-        return new Coordinate(x, y);
+        return getOpponent().getGameUnit().getOcean()[x][y];
     }
 
 }
