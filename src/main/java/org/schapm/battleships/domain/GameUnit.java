@@ -47,10 +47,18 @@ public class GameUnit {
 
         for (Ship ship : ships) {
             Coordinate[] coordinates = new Coordinate[ship.getLength()];
-            for (int i = 0; i < ship.getLength(); i++) {
+
+            randomRowOrColumn = random.nextInt(OCEAN_SIZE);
+            randomWithinRowOrColumn = random.nextInt(OCEAN_SIZE);
+
+            while (randomRowOrColumn + ship.getLength() > OCEAN_SIZE
+                    || randomWithinRowOrColumn + ship.getLength() > OCEAN_SIZE) {
                 randomRowOrColumn = random.nextInt(OCEAN_SIZE);
                 randomWithinRowOrColumn = random.nextInt(OCEAN_SIZE);
-                coordinates[i] = ocean[randomRowOrColumn][randomWithinRowOrColumn];
+            }
+
+            for (int i = 0; i < ship.getLength(); i++) {
+                coordinates[i] = ocean[randomRowOrColumn][randomWithinRowOrColumn + i];
             }
 
             ship.addCoordinates(coordinates);
