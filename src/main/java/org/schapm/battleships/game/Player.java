@@ -39,6 +39,8 @@ public abstract class Player {
 
     public String guessOutcome(Coordinate coordinate) {
         if (coordinate.hasShip()) {
+            getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(Coordinate.HIT);
+
             return Coordinate.HIT;
         }
 
