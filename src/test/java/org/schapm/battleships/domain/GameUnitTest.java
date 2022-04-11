@@ -6,6 +6,7 @@ import org.junit.platform.commons.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -127,6 +128,15 @@ public class GameUnitTest {
                 assertTrue(shipsCoordinates.get(i).getX() == x + i
                         || shipsCoordinates.get(i).getY() == y + i, "The X or Y value has not incremented by 1, i.e. it is not sequential");
             }
+        }
+    }
+
+    @Test
+    public void gameUnitSetsShipsCoordinateValuesToShipInitial() {
+        ArrayList<Ship> ships = gameUnit.getShips();
+
+        for (Ship ship : ships) {
+            ship.getCoordinates().forEach(coordinate -> assertEquals(String.valueOf(ship.getNameInitial()), coordinate.getValue(), "Coordinate value is not set to the ship's initial"));
         }
     }
 
