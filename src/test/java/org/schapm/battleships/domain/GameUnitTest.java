@@ -2,9 +2,10 @@ package org.schapm.battleships.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -88,6 +89,26 @@ public class GameUnitTest {
         for (Ship ship : ships) {
             assertTrue(ship.getCoordinates().size() > 1, "Ship should have multiple coordinates");
         }
+    }
+
+    @Test
+    public void gameUnitAssignsCreatedShipsWithRandomGridCoordinates() {
+        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<Coordinate> shipsCoordinates = new ArrayList<>();
+
+        GameUnit secondGameUnit = new GameUnit();
+        ArrayList<Ship> secondShips = secondGameUnit.getShips();
+        ArrayList<Coordinate> secondShipsCoordinates = new ArrayList<>();
+
+        for (Ship ship : ships) {
+            shipsCoordinates.addAll(ship.getCoordinates());
+        }
+
+        for (Ship ship : secondShips) {
+            secondShipsCoordinates.addAll(ship.getCoordinates());
+        }
+
+        assertNotEquals(secondShipsCoordinates, shipsCoordinates);
     }
 
 }
