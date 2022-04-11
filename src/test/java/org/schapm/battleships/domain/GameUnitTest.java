@@ -140,4 +140,14 @@ public class GameUnitTest {
         }
     }
 
+    @Test
+    public void gameUnitSetsAssignedShipCoordinatesToShip() {
+        ArrayList<Ship> ships = gameUnit.getShips();
+
+        for (Ship ship : ships) {
+            ship.getCoordinates().forEach(coordinate -> assertTrue(coordinate.hasShip(), "Coordinate does not have a ship"));
+            ship.getCoordinates().forEach(coordinate -> assertSame(ship, coordinate.getShip(), "Coordinate's ship is not the same as the ship with the assigned coordinate"));
+        }
+    }
+
 }
