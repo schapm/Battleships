@@ -40,10 +40,10 @@ public class GameUnitTest {
     @Test
     public void gameUnitOceanAndGuessesGridsAreMultiDimensionalAndNotNull() {
         assertNotNull(gameUnit.getOcean()[0][0]);
-        assertNotNull(gameUnit.getOcean()[EXPECTED_OCEAN_SIZE -1 ][EXPECTED_OCEAN_SIZE - 1]);
+        assertNotNull(gameUnit.getOcean()[EXPECTED_OCEAN_SIZE - 1][EXPECTED_OCEAN_SIZE - 1]);
 
         assertNotNull(gameUnit.getGuesses()[0][0]);
-        assertNotNull(gameUnit.getGuesses()[EXPECTED_OCEAN_SIZE -1 ][EXPECTED_OCEAN_SIZE - 1]);
+        assertNotNull(gameUnit.getGuesses()[EXPECTED_OCEAN_SIZE - 1][EXPECTED_OCEAN_SIZE - 1]);
     }
 
     @Test
@@ -109,6 +109,25 @@ public class GameUnitTest {
         }
 
         assertNotEquals(secondShipsCoordinates, shipsCoordinates);
+    }
+
+    @Test
+    public void gameUnitAssignsCreatedShipsWithRandomSequentialGridCoordinatesWithinOceanLimits() {
+        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<Coordinate> shipsCoordinates;
+
+        for (Ship ship : ships) {
+            shipsCoordinates = ship.getCoordinates();
+
+            // First coordinates
+            int x = shipsCoordinates.get(0).getX();
+            int y = shipsCoordinates.get(0).getY();
+
+            for (int i = 0; i < ship.getLength(); i++) {
+                assertTrue(shipsCoordinates.get(i).getX() == x + i
+                        || shipsCoordinates.get(i).getY() == y + i, "The X or Y value has not incremented by 1, i.e. it is not sequential");
+            }
+        }
     }
 
 }
