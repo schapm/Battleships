@@ -26,7 +26,7 @@ public class GameUnit {
         this.ships = new ArrayList<>();
         createShips();
         setShipCoordinates();
-        setShipCoordinatesToShipInitial();
+        setShipCoordinatesValueToShipInitialAndSetShip();
     }
 
     private void createShips() {
@@ -80,9 +80,12 @@ public class GameUnit {
         }
     }
 
-    private void setShipCoordinatesToShipInitial() {
+    private void setShipCoordinatesValueToShipInitialAndSetShip() {
         for (Ship ship : ships) {
-            ship.getCoordinates().forEach(coordinate -> coordinate.setValue(ship.getNameInitial()));
+            for (Coordinate coordinate : ship.getCoordinates()) {
+                coordinate.setValue(ship.getNameInitial());
+                coordinate.setShip(ship);
+            }
         }
     }
 
