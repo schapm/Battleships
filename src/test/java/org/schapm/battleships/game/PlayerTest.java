@@ -2,6 +2,7 @@ package org.schapm.battleships.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.schapm.battleships.domain.Coordinate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,6 +49,16 @@ public class PlayerTest {
         assertSame(testComputerPlayer, humanPlayer.getOpponent(), testComputerPlayer.getName() + " and " + humanPlayer.getName() + " getOpponent() should be the same");
         computerPlayer.setOpponent(testHumanPlayer);
         assertSame(testHumanPlayer, computerPlayer.getOpponent(), testHumanPlayer.getName() + " and " + computerPlayer.getName() + " getOpponent() should be the same");
+    }
+
+    @Test
+    public void computerPlayerGeneratesRandomGuess() {
+        Coordinate firstCoordinate = computerPlayer.guess();
+        Coordinate secondCoordinate = computerPlayer.guess();
+        
+        assertTrue(firstCoordinate.getX() != secondCoordinate.getX() || firstCoordinate.getY() != secondCoordinate.getY(),
+                "Guesses should not be the same. First: x=" + firstCoordinate.getX() + " y=" + firstCoordinate.getY() +
+                        "Second: x=" + secondCoordinate.getX() + " y=" + secondCoordinate.getY());
     }
 
 }
