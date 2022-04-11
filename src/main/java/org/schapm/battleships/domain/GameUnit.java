@@ -42,8 +42,8 @@ public class GameUnit {
 
     private void setShipCoordinates() throws NullPointerException {
         Random random = new Random();
-        int randomRowOrColumn = 0;
-        int randomWithinRowOrColumn = 0;
+        int randomRowOrColumn;
+        int randomWithinRowOrColumn;
 
         for (Ship ship : ships) {
             Coordinate[] coordinates = new Coordinate[ship.getLength()];
@@ -58,7 +58,13 @@ public class GameUnit {
             }
 
             for (int i = 0; i < ship.getLength(); i++) {
-                coordinates[i] = ocean[randomRowOrColumn][randomWithinRowOrColumn + i];
+                if (ship.getOrientation().equals(Ship.Orientation.HORIZONTAL)) {
+                    coordinates[i] = ocean[randomRowOrColumn][randomWithinRowOrColumn + i];
+                }
+
+                if (ship.getOrientation().equals(Ship.Orientation.VERTICAL)) {
+                    coordinates[i] = ocean[randomRowOrColumn + i][randomWithinRowOrColumn];
+                }
             }
 
             ship.addCoordinates(coordinates);
