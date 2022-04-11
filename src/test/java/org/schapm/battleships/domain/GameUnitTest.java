@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -148,6 +146,19 @@ public class GameUnitTest {
             ship.getCoordinates().forEach(coordinate -> assertTrue(coordinate.hasShip(), "Coordinate does not have a ship"));
             ship.getCoordinates().forEach(coordinate -> assertSame(ship, coordinate.getShip(), "Coordinate's ship is not the same as the ship with the assigned coordinate"));
         }
+    }
+
+    @Test
+    public void gameUnitShipsArentPlacedOverExistingShips() {
+        ArrayList<Coordinate> allCoordinates = new ArrayList<>();
+        Set<Coordinate> allCoordinatesAsSet = new HashSet<>();
+
+        for (Ship ship : gameUnit.getShips()) {
+            allCoordinates.addAll(ship.getCoordinates());
+            allCoordinatesAsSet.addAll(ship.getCoordinates());
+        }
+        
+        assertEquals(allCoordinatesAsSet.size(), allCoordinates.size(), "Duplicate coordinates were found in different ships");
     }
 
 }
