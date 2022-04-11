@@ -52,8 +52,10 @@ public class GameUnit {
             randomRowOrColumn = random.nextInt(OCEAN_SIZE);
             randomWithinRowOrColumn = random.nextInt(OCEAN_SIZE);
 
+
             while (randomRowOrColumn + ship.getLength() > OCEAN_SIZE
-                    || randomWithinRowOrColumn + ship.getLength() > OCEAN_SIZE) {
+                    || randomWithinRowOrColumn + ship.getLength() > OCEAN_SIZE
+                    || wouldShipOverlapAnother(ship, randomRowOrColumn, randomWithinRowOrColumn)) {
                 randomRowOrColumn = random.nextInt(OCEAN_SIZE);
                 randomWithinRowOrColumn = random.nextInt(OCEAN_SIZE);
             }
@@ -87,6 +89,25 @@ public class GameUnit {
                 coordinate.setShip(ship);
             }
         }
+    }
+
+    private boolean wouldShipOverlapAnother(Ship ship, int randomRowOrColumn, int randomWithinRowOrColumn) {
+        for (int i = 0; i < ship.getLength(); i++) {
+            switch (ship.getOrientation()) {
+                case HORIZONTAL:
+                    if (ocean[randomRowOrColumn][randomWithinRowOrColumn + i].hasShip()) {
+                        return true;
+                    }
+                    break;
+                case VERTICAL:
+                    if (ocean[randomRowOrColumn + i][randomWithinRowOrColumn].hasShip()) {
+                        return true;
+                    }
+                    break;
+            }
+        }
+
+        return false;
     }
 
     public Coordinate[][] getOcean() {
