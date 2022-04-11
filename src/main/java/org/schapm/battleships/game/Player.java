@@ -1,5 +1,6 @@
 package org.schapm.battleships.game;
 
+import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.GameUnit;
 
 import java.util.Objects;
@@ -34,6 +35,14 @@ public abstract class Player {
 
     public void setOpponent(Player opponent) {
         this.opponent = opponent;
+    }
+
+    public String guessOutcome(Coordinate coordinate) {
+        if (coordinate.hasShip()) {
+            return Coordinate.HIT;
+        }
+
+        return Coordinate.MISS;
     }
 
 }
