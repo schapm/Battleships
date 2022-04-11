@@ -1,6 +1,7 @@
 package org.schapm.battleships.domain;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author schapm
@@ -40,8 +41,18 @@ public class GameUnit {
     }
 
     private void setShipCoordinates() throws NullPointerException {
-        Coordinate[] coordinates = {new Coordinate(0, 0), new Coordinate(1, 0)};
+        Random random = new Random();
+        int randomRowOrColumn = 0;
+        int randomWithinRowOrColumn = 0;
+
         for (Ship ship : ships) {
+            Coordinate[] coordinates = new Coordinate[ship.getLength()];
+            for (int i = 0; i < ship.getLength(); i++) {
+                randomRowOrColumn = random.nextInt(OCEAN_SIZE);
+                randomWithinRowOrColumn = random.nextInt(OCEAN_SIZE);
+                coordinates[i] = ocean[randomRowOrColumn][randomWithinRowOrColumn];
+            }
+
             ship.addCoordinates(coordinates);
         }
     }
