@@ -2,6 +2,7 @@ package org.schapm.battleships.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -64,4 +65,20 @@ public abstract class Ship {
         this.coordinates.addAll(Arrays.asList(coordinates));
     }
 
+    public void removeCoordinate(Coordinate coordinate) {
+        this.coordinates.remove(coordinate);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ship ship = (Ship) o;
+        return length == ship.length && Objects.equals(name, ship.name) && orientation == ship.orientation && Objects.equals(coordinates, ship.coordinates);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, length, orientation, coordinates);
+    }
 }

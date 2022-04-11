@@ -43,6 +43,7 @@ public abstract class Player {
         if (coordinate.hasShip()) {
             getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(HIT);
             getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].setValue(HIT);
+            getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].getShip().removeCoordinate(coordinate);
 
             return HIT;
         }
