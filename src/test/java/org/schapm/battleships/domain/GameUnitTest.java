@@ -108,7 +108,7 @@ public class GameUnitTest {
             secondShipsCoordinates.addAll(ship.getCoordinates());
         }
 
-        assertNotEquals(secondShipsCoordinates, shipsCoordinates);
+        assertNotEquals(secondShipsCoordinates, shipsCoordinates, "The second GameUnit ships coordinates are the same as the first GameUnit ship coordinates");
     }
 
     @Test
