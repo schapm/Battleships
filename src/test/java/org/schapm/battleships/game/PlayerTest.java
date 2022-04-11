@@ -92,4 +92,13 @@ public class PlayerTest {
                 HUMAN_PLAYER_NAME + " 'HIT' guess does not equal 'HIT' on " + HUMAN_PLAYER_NAME + " guesses grid");
     }
 
+    @Test
+    public void playerGuessRecordsGuessOnOpponentGameUnit() {
+        Coordinate coordinate = computerPlayer.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0); // Get ship coordinate on opponent GameUnit
+        computerPlayer.guessOutcome(coordinate);
+
+        assertEquals(Coordinate.HIT, computerPlayer.getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].getValue(),
+                COMPUTER_PLAYER_NAME + " 'HIT' guess does not equal 'HIT' on " + HUMAN_PLAYER_NAME + " ocean grid");
+    }
+
 }
