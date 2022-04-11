@@ -2,9 +2,10 @@ package org.schapm.battleships.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.schapm.battleships.domain.Battleship;
 import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.Destroyer;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -99,6 +100,15 @@ public class PlayerTest {
 
         assertEquals(Coordinate.HIT, computerPlayer.getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].getValue(),
                 COMPUTER_PLAYER_NAME + " 'HIT' guess does not equal 'HIT' on " + HUMAN_PLAYER_NAME + " ocean grid");
+    }
+
+    @Test
+    public void playerGuessOfHitOutcomeRemovesCoordinateFromShip() {
+        ArrayList<Coordinate> coordinates = computerPlayer.getOpponent().getGameUnit().getShips().get(0).getCoordinates();
+        Coordinate coordinate = coordinates.get(0);
+        computerPlayer.guessOutcome(coordinate);
+
+        assertFalse(coordinates.contains(coordinate), HUMAN_PLAYER_NAME + " GameUnit ship coordinates still contain the 'HIT' ship coordinates, which should have been removed");
     }
 
 }
