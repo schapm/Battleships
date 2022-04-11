@@ -5,6 +5,8 @@ import org.schapm.battleships.domain.GameUnit;
 
 import java.util.Objects;
 
+import static org.schapm.battleships.domain.Coordinate.*;
+
 /**
  * @author schapm
  */
@@ -39,9 +41,10 @@ public abstract class Player {
 
     public String guessOutcome(Coordinate coordinate) {
         if (coordinate.hasShip()) {
-            getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(Coordinate.HIT);
+            getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(HIT);
+            getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].setValue(HIT);
 
-            return Coordinate.HIT;
+            return HIT;
         }
 
         return Coordinate.MISS;
