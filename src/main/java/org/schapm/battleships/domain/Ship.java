@@ -1,9 +1,6 @@
 package org.schapm.battleships.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author schapm
@@ -65,8 +62,12 @@ public abstract class Ship {
         this.coordinates.addAll(Arrays.asList(coordinates));
     }
 
-    public void removeCoordinate(Coordinate coordinate) {
-        this.coordinates.remove(coordinate);
+    public void removeCoordinate(Coordinate coordinateToRemove) {
+        this.coordinates.removeIf(coordinate -> coordinate.equals(coordinateToRemove));
+    }
+
+    public boolean isShipSunk() {
+        return this.coordinates.isEmpty();
     }
 
     @Override
@@ -81,4 +82,5 @@ public abstract class Ship {
     public int hashCode() {
         return Objects.hash(name, length, orientation, coordinates);
     }
+
 }

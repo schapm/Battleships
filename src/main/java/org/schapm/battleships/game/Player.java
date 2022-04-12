@@ -2,6 +2,7 @@ package org.schapm.battleships.game;
 
 import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.GameUnit;
+import org.schapm.battleships.domain.Ship;
 
 import java.util.Objects;
 
@@ -41,9 +42,16 @@ public abstract class Player {
 
     public String guessOutcome(Coordinate coordinate) {
         if (coordinate.hasShip()) {
+            Ship ship = coordinate.getShip();
             getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(HIT);
-            getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].setValue(HIT);
-            getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].getShip().removeCoordinate(coordinate);
+
+            Coordinate opponentOceanCoordinate = getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()];
+            opponentOceanCoordinate.setValue(HIT);
+            opponentOceanCoordinate.getShip().removeCoordinate(coordinate);
+
+            if (ship.isShipSunk()) {
+                getOpponent().getGameUnit().getShips().removeIf(ship::equals);
+            }
 
             return HIT;
         }
