@@ -56,6 +56,8 @@ public abstract class Player {
             return HIT;
         }
 
+        getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(MISS);
+
         return Coordinate.MISS;
     }
 
