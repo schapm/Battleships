@@ -41,11 +41,13 @@ public abstract class Player {
     }
 
     public String guessOutcome(Coordinate coordinate) {
+        Coordinate opponentOceanCoordinate = getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()];
+        Coordinate playerGuessesCoordinate = getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()];
+
         if (coordinate.hasShip()) {
             Ship ship = coordinate.getShip();
-            getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(HIT);
+            playerGuessesCoordinate.setValue(HIT);
 
-            Coordinate opponentOceanCoordinate = getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()];
             opponentOceanCoordinate.setValue(HIT);
             opponentOceanCoordinate.getShip().removeCoordinate(coordinate);
 
@@ -56,7 +58,8 @@ public abstract class Player {
             return HIT;
         }
 
-        getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()].setValue(MISS);
+        playerGuessesCoordinate.setValue(MISS);
+        opponentOceanCoordinate.setValue(MISS);
 
         return Coordinate.MISS;
     }
