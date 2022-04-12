@@ -115,6 +115,17 @@ public class PlayerTest {
     }
 
     @Test
+    public void playerGuessOfMissRecordsGuessOnOpponentGameUnit() {
+        Coordinate coordinate = new Coordinate(0, 0);
+        coordinate.setShip(null);
+
+        computerPlayer.guessOutcome(coordinate);
+
+        assertEquals(Coordinate.MISS, computerPlayer.getOpponent().getGameUnit().getOcean()[coordinate.getX()][coordinate.getY()].getValue(),
+                COMPUTER_PLAYER_NAME + " 'MISS' guess does not equal 'MISS' on " + HUMAN_PLAYER_NAME + " ocean grid");
+    }
+
+    @Test
     public void playerGuessOfHitOutcomeRemovesCoordinateFromShip() {
         ArrayList<Coordinate> coordinates = computerPlayer.getOpponent().getGameUnit().getShips().get(0).getCoordinates();
         Coordinate coordinate = coordinates.get(0);
