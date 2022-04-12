@@ -86,7 +86,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void playerGuessRecordsGuessOnOwnGameUnit() {
+    public void playerGuessOfHitRecordsGuessOnOwnGameUnit() {
         Coordinate coordinate = humanPlayer.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0); // Get ship coordinate on opponent GameUnit
         humanPlayer.guessOutcome(coordinate);
 
@@ -95,7 +95,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void playerGuessRecordsGuessOnOpponentGameUnit() {
+    public void playerGuessOfHitRecordsGuessOnOpponentGameUnit() {
         Coordinate coordinate = computerPlayer.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0); // Get ship coordinate on opponent GameUnit
         computerPlayer.guessOutcome(coordinate);
 
