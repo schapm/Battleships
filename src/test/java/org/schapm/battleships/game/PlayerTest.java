@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.Destroyer;
+import org.schapm.battleships.domain.Ship;
 
 import java.util.ArrayList;
 
@@ -109,6 +110,18 @@ public class PlayerTest {
         computerPlayer.guessOutcome(coordinate);
 
         assertFalse(coordinates.contains(coordinate), HUMAN_PLAYER_NAME + " GameUnit ship coordinates still contain the 'HIT' ship coordinates, which should have been removed");
+    }
+
+    @Test
+    public void playerGuessThatSinksShipRemovesShipFromGameUnit() {
+        Ship shipToSink = computerPlayer.getOpponent().getGameUnit().getShips().get(0);
+        Coordinate coordinate = shipToSink.getCoordinates().get(0);
+        shipToSink.getCoordinates().clear();
+
+        computerPlayer.guessOutcome(coordinate);
+
+        assertTrue(shipToSink.isShipSunk(), "Ship coordinates list is empty and should return true that it's sunk");
+        assertFalse(computerPlayer.getOpponent().getGameUnit().getShips().contains(shipToSink), "The sunk ship should not have been found in opponent's list of ships");
     }
 
 }
