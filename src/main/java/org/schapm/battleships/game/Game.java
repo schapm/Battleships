@@ -17,7 +17,8 @@ public class Game {
     }
 
     public boolean isWinner() {
-        return false;
+        return player.getGameUnit().getShips().isEmpty()
+                || opponent.getGameUnit().getShips().isEmpty();
     }
 
 }
