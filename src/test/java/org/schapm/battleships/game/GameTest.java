@@ -37,4 +37,14 @@ public class GameTest {
         assertFalse(game.isWinner(), "isWinner() should return false on start");
     }
 
+    @Test
+    public void isWinnerReturnsTrueIfEitherPlayersShipListIsEmpty() {
+        game.player.getGameUnit().getShips().clear();
+        assertTrue(game.isWinner(), "isWinner() should return true, as player's ship list was cleared");
+
+        game = new Game();
+        game.opponent.getGameUnit().getShips().clear();
+        assertTrue(game.isWinner(), "isWinner() should return true, as opponent's ship list was cleared");
+    }
+
 }
