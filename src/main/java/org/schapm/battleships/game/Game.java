@@ -12,6 +12,8 @@ public class Game {
     public Game() {
         this.player = new HumanPlayer("Player");
         this.opponent = new ComputerPlayer("Computer");
+        this.player.setOpponent(opponent);
+        this.opponent.setOpponent(player);
     }
 
 }

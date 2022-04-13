@@ -33,7 +33,7 @@ public abstract class Player {
     }
 
     public Player getOpponent() {
-        return Objects.requireNonNullElseGet(opponent, () -> new ComputerPlayer("ComputerPlayer"));
+        return this.opponent;
     }
 
     public void setOpponent(Player opponent) {
