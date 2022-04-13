@@ -32,4 +32,9 @@ public class GameTest {
         assertSame(game.player, game.opponent.getOpponent(), "Opponent's set opponent is not the same as player");
     }
 
+    @Test
+    public void gameMethodIsWinnerReturnsFalseOnInstantiation() {
+        assertFalse(game.isWinner(), "isWinner() should return false on start");
+    }
+
 }
