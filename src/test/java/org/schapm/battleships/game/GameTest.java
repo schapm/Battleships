@@ -23,4 +23,13 @@ public class GameTest {
         assertTrue(game.opponent instanceof ComputerPlayer, game.opponent.getName() + " is not an instance of class 'ComputerPlayer'");
     }
 
+    @Test
+    public void gamePlayersHaveOpponentSet() {
+        assertNotNull(game.player.getOpponent(), "Player must have an opponent set");
+        assertSame(game.opponent, game.player.getOpponent(), "Player's set opponent is not the same as opponent");
+
+        assertNotNull(game.opponent.getOpponent(), "Opponent must have an opponent set");
+        assertSame(game.player, game.opponent.getOpponent(), "Opponent's set opponent is not the same as player");
+    }
+
 }
