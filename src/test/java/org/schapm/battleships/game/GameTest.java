@@ -1,17 +1,40 @@
 package org.schapm.battleships.game;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.schapm.battleships.domain.GameUnit.OCEAN_SIZE;
 
 public class GameTest {
 
     private Game game;
 
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
+
+    private final String regexToMatchCoordinateOutput = "\\[(.*?)\\]";
+
     @BeforeEach
     public void setUp() {
         game = new Game();
+
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
     }
 
     @Test
@@ -45,6 +68,22 @@ public class GameTest {
         game = new Game();
         game.opponent.getGameUnit().getShips().clear();
         assertTrue(game.isWinner(), "isWinner() should return true, as opponent's ship list was cleared");
+    }
+
+    @Test
+    public void playerGridsCanBePrinted() {
+        game.printGrid(game.player.getGameUnit().getOcean());
+
+        Pattern pattern = Pattern.compile(regexToMatchCoordinateOutput);
+        Matcher matcher = pattern.matcher(outContent.toString());
+
+        int coordinateOccurrences = 0;
+        while (matcher.find()) {
+            coordinateOccurrences++;
+        }
+
+        assertEquals(OCEAN_SIZE * OCEAN_SIZE, coordinateOccurrences, "Number of coordinates does not match the output. Expected " +
+                OCEAN_SIZE * OCEAN_SIZE + ". Instead, it is " + coordinateOccurrences);
     }
 
 }
