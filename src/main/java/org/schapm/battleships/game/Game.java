@@ -16,4 +16,8 @@ public class Game {
         this.opponent.setOpponent(player);
     }
 
+    public boolean isWinner() {
+        return false;
+    }
+
 }
