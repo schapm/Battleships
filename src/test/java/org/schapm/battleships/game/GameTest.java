@@ -22,6 +22,7 @@ public class GameTest {
     private final PrintStream originalErr = System.err;
 
     private final String regexToMatchCoordinateOutput = "\\[(.*?)\\]";
+    private final String regexToMatchXAxisTicks = "(.*1.*2.*3.*4.*5.*6.*7.*8.*9.*10.*)";
 
     @BeforeEach
     public void setUp() {
@@ -84,6 +85,21 @@ public class GameTest {
 
         assertEquals(OCEAN_SIZE * OCEAN_SIZE, coordinateOccurrences, "Number of coordinates does not match the output. Expected " +
                 OCEAN_SIZE * OCEAN_SIZE + ". Instead, it is " + coordinateOccurrences);
+    }
+
+    @Test
+    public void printedGridPrintsXAxisTicks() {
+        game.printGrid(game.player.getGameUnit().getOcean());
+
+        Pattern pattern = Pattern.compile(regexToMatchXAxisTicks);
+        Matcher matcher = pattern.matcher(outContent.toString());
+
+        int tickOccurrences = 0;
+        while (matcher.find()) {
+            tickOccurrences++;
+        }
+
+        assertEquals(1, tickOccurrences, "There should only be one set of X-axis ticks");
     }
 
     @Test
