@@ -59,7 +59,7 @@ public class Game {
         Coordinate guessAsCoordinate = playerGuessToCoordinate(guess);
         String guessOutcome = player.guessOutcome(guessAsCoordinate);
 
-        System.out.println(guessOutcome);
+        System.out.println(printGuessOutcome(guessOutcome, guessAsCoordinate));
     }
 
     public boolean isWinner() {
