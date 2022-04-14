@@ -54,4 +54,12 @@ public class Game {
         return number > 0 && number < 27 ? (char) (number + 96) : 1;
     }
 
+    public boolean validateUserInput(String guess) {
+        String firstIsLetter = "[a-jA-J]";
+        String secondIsNumberOneToTen = "(10|[1-9])$";
+        String regex = firstIsLetter + secondIsNumberOneToTen;
+
+        return guess.matches(regex);
+    }
+
 }
