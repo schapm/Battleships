@@ -196,4 +196,11 @@ public class GameTest {
                 "Expected return value to contain 'SUNK'. Instead, it is " + game.printGuessOutcome(guessOutcomeOfHit, hitCoordinate));
     }
 
+    @Test
+    public void opponentGuessOutputsUserFriendlyCoordinateWithLetterAndNumber() {
+        Coordinate guessCoordinate = game.opponent.getOpponent().getGameUnit().getOcean()[0][0]; // A1
+        String guessPrintedToConsole = game.opponentGuessToUserFriendlyGuess(guessCoordinate);
+        assertEquals("A1", guessPrintedToConsole, "String did not equal 'A1'. Instead, it is " + guessPrintedToConsole);
+    }
+
 }
