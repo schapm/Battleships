@@ -167,4 +167,16 @@ public class GameTest {
         assertTrue(playerGuessAsCoordinate.getX() == 0 && playerGuessAsCoordinate.getY() == 4, "A guess of 'A5' was not equal to X: 0 and Y: 4");
     }
 
+    @Test
+    public void playerGuessOutcomeOfHitOrMissIsOutputInUserFriendlyLanguage() {
+        Coordinate hitCoordinate = game.player.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0);
+        String guessOutcomeOfHit = game.player.guessOutcome(hitCoordinate);
+        assertTrue(game.printGuessOutcome(guessOutcomeOfHit).contains("HIT"), "Expected return value to contain \"HIT\"");
+
+        Coordinate missCoordinate = new Coordinate(0, 0);
+        missCoordinate.setShip(null);
+        String guessOutcomeOfMiss = game.player.guessOutcome(missCoordinate);
+        assertTrue(game.printGuessOutcome(guessOutcomeOfMiss).contains("MISS"), "Expected return value to contain \"MISS\"");
+    }
+
 }
