@@ -69,6 +69,7 @@ public class Game {
         Coordinate opponentGuessAsCoordinate = opponent.guess();
         String guessOutcome = opponent.guessOutcome(opponentGuessAsCoordinate);
 
+        System.out.println(opponentGuessToUserFriendlyGuess(opponentGuessAsCoordinate));
         System.out.println(printGuessOutcome(guessOutcome, opponentGuessAsCoordinate));
     }
 
@@ -124,6 +125,13 @@ public class Game {
 
     public char getLetterFromNumber(int number) {
         return number > 0 && number < 27 ? (char) (number + 96) : 1;
+    }
+
+    public String opponentGuessToUserFriendlyGuess(Coordinate guessCoordinate) {
+        String letter = String.valueOf(getLetterFromNumber(guessCoordinate.getX() + 1));
+        String number = String.valueOf(guessCoordinate.getY() + 1);
+
+        return (letter + number).toUpperCase();
     }
 
     public boolean validateUserInput(String guess) {
