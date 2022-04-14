@@ -4,6 +4,7 @@ import org.schapm.battleships.domain.Coordinate;
 
 import java.util.Scanner;
 
+import static org.schapm.battleships.domain.Coordinate.*;
 import static org.schapm.battleships.domain.GameUnit.OCEAN_SIZE;
 
 /**
@@ -85,6 +86,20 @@ public class Game {
         }
 
         System.out.println();
+    }
+
+    public String printGuessOutcome(String outcome) {
+        String userFriendlyOutcome = "";
+
+        if (outcome.equals(HIT)) {
+            userFriendlyOutcome = "HIT";
+        }
+
+        if (outcome.equals(MISS)) {
+            userFriendlyOutcome = "MISS";
+        }
+
+        return userFriendlyOutcome;
     }
 
     public int getNumberFromLetter(char letter) {
