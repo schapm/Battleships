@@ -2,6 +2,8 @@ package org.schapm.battleships.game;
 
 import org.schapm.battleships.domain.Coordinate;
 
+import java.util.Scanner;
+
 import static org.schapm.battleships.domain.GameUnit.OCEAN_SIZE;
 
 /**
@@ -12,12 +14,51 @@ public class Game {
 
     protected final HumanPlayer player;
     protected final ComputerPlayer opponent;
+    protected final Scanner scanner;
 
     public Game() {
         this.player = new HumanPlayer("Player");
         this.opponent = new ComputerPlayer("Computer");
         this.player.setOpponent(opponent);
         this.opponent.setOpponent(player);
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void start() {
+        while (!isWinner()) {
+            playerTurn();
+            if (isWinner()) {
+                break;
+            }
+            //opponentTurn();
+        }
+    }
+
+    protected void playerTurn() {
+        printGrid(player.getGameUnit().getGuesses());
+        printGrid(player.getGameUnit().getOcean());
+
+        System.out.println("What's your guess?");
+        System.out.print("> ");
+
+        String guess = scanner.nextLine();
+        if (!validateUserInput(guess)) {
+            while (true) {
+                System.out.println("Guess should be between A-J & 0-10, e.g. \"J10\"");
+                System.out.print("> ");
+
+                String newGuess = scanner.nextLine();
+                if (validateUserInput(newGuess)) {
+                    guess = newGuess;
+                    break;
+                }
+            }
+        }
+
+        Coordinate guessAsCoordinate = playerGuessToCoordinate(guess);
+        String guessOutcome = player.guessOutcome(guessAsCoordinate);
+
+        System.out.println(guessOutcome);
     }
 
     public boolean isWinner() {
@@ -42,6 +83,8 @@ public class Game {
                 System.out.print("[" + grid[row][col].getValue() + "]");
             }
         }
+
+        System.out.println();
     }
 
     public int getNumberFromLetter(char letter) {
@@ -63,10 +106,10 @@ public class Game {
     }
 
     public Coordinate playerGuessToCoordinate(String guess) {
-        String [] split = guess.split("");
+        String[] split = guess.split("");
         int letterAsXValue = getNumberFromLetter(split[0].toLowerCase().charAt(0)) - 1;
         int numberAsYValue;
-        
+
         if (guess.length() == 3) {
             numberAsYValue = Integer.parseInt(split[1] + split[2]) - 1;
         } else {
