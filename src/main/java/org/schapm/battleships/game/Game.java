@@ -93,6 +93,9 @@ public class Game {
 
         if (outcome.equals(HIT)) {
             userFriendlyOutcome = "HIT: " + guessCoordinate.getShip().getName().toUpperCase();
+            if (guessCoordinate.getShip().isShipSunk()) {
+                userFriendlyOutcome = userFriendlyOutcome + " SUNK!";
+            }
         }
 
         if (outcome.equals(MISS)) {
