@@ -31,7 +31,7 @@ public class Game {
             if (isWinner()) {
                 break;
             }
-            //opponentTurn();
+            opponentTurn();
         }
     }
 
@@ -60,6 +60,16 @@ public class Game {
         String guessOutcome = player.guessOutcome(guessAsCoordinate);
 
         System.out.println(printGuessOutcome(guessOutcome, guessAsCoordinate));
+    }
+
+    protected void opponentTurn() {
+        System.out.println("Opponent guesses");
+        System.out.print("> ");
+
+        Coordinate opponentGuessAsCoordinate = opponent.guess();
+        String guessOutcome = opponent.guessOutcome(opponentGuessAsCoordinate);
+
+        System.out.println(printGuessOutcome(guessOutcome, opponentGuessAsCoordinate));
     }
 
     public boolean isWinner() {
