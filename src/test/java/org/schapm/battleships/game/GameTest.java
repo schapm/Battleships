@@ -171,12 +171,20 @@ public class GameTest {
     public void playerGuessOutcomeOfHitOrMissIsOutputInUserFriendlyLanguage() {
         Coordinate hitCoordinate = game.player.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0);
         String guessOutcomeOfHit = game.player.guessOutcome(hitCoordinate);
-        assertTrue(game.printGuessOutcome(guessOutcomeOfHit).contains("HIT"), "Expected return value to contain \"HIT\"");
+        assertTrue(game.printGuessOutcome(guessOutcomeOfHit, hitCoordinate).contains("HIT"), "Expected return value to contain \"HIT\"");
 
         Coordinate missCoordinate = new Coordinate(0, 0);
         missCoordinate.setShip(null);
         String guessOutcomeOfMiss = game.player.guessOutcome(missCoordinate);
-        assertTrue(game.printGuessOutcome(guessOutcomeOfMiss).contains("MISS"), "Expected return value to contain \"MISS\"");
+        assertTrue(game.printGuessOutcome(guessOutcomeOfMiss, missCoordinate).contains("MISS"), "Expected return value to contain \"MISS\"");
+    }
+
+    @Test
+    public void playerGuessOutcomeOfHitAlsoOutputsTheNameOfTheShip() {
+        Coordinate hitCoordinate = game.player.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0);
+        String guessOutcomeOfHit = game.player.guessOutcome(hitCoordinate);
+        assertTrue(game.printGuessOutcome(guessOutcomeOfHit, hitCoordinate).contains(hitCoordinate.getShip().getName().toUpperCase()),
+                "Expected return value to contain '" + hitCoordinate.getShip().getName() + "'. Instead, it is " + game.printGuessOutcome(guessOutcomeOfHit, hitCoordinate));
     }
 
 }
