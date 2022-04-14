@@ -2,6 +2,8 @@ package org.schapm.battleships.game;
 
 import org.schapm.battleships.domain.Coordinate;
 
+import static org.schapm.battleships.domain.GameUnit.OCEAN_SIZE;
+
 /**
  * @author schapm
  */
@@ -24,7 +26,14 @@ public class Game {
     }
 
     public void printGrid(Coordinate[][] grid) {
+        String padding = "  ";
         for (int row = 0; row < grid.length; row++) {
+            if (row == 0) {
+                System.out.print(padding);
+                for (int i = 1; i < OCEAN_SIZE + 1; i++) {
+                    System.out.print(padding + i);
+                }
+            }
             System.out.println();
             for (int col = 0; col < grid.length; col++) {
                 System.out.print("[" + grid[row][col].getValue() + "]");
