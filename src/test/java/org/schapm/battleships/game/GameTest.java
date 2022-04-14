@@ -139,4 +139,21 @@ public class GameTest {
         assertEquals(1, game.getLetterFromNumber(-1));
     }
 
+    @Test
+    public void playerInputIsValidated() {
+        String validInput1 = "A1";
+        String validInput2 = "J10";
+        String validInput3 = "g7";
+        String invalidInput1 = "A0";
+        String invalidInput2 = "k9";
+        String invalidInput3 = "I11";
+
+        assertTrue(game.validateUserInput(validInput1), "Expected true for " + validInput1);
+        assertTrue(game.validateUserInput(validInput2), "Expected true for " + validInput2);
+        assertTrue(game.validateUserInput(validInput3), "Expected true for " + validInput3);
+        assertFalse(game.validateUserInput(invalidInput1), "Expected false for " + invalidInput1);
+        assertFalse(game.validateUserInput(invalidInput2), "Expected false for " + invalidInput2);
+        assertFalse(game.validateUserInput(invalidInput3), "Expected false for " + invalidInput3);
+    }
+
 }
