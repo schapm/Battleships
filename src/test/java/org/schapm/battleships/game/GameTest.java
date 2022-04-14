@@ -86,4 +86,14 @@ public class GameTest {
                 OCEAN_SIZE * OCEAN_SIZE + ". Instead, it is " + coordinateOccurrences);
     }
 
+    @Test
+    public void letterCanBeConvertedToNumber() {
+        assertEquals(1, game.getNumberFromLetter('A'));
+        assertEquals(1, game.getNumberFromLetter('a'));
+        assertEquals(13, game.getNumberFromLetter('M'));
+        assertEquals(26, game.getNumberFromLetter('Z'));
+        assertEquals(26, game.getNumberFromLetter('z'));
+        assertEquals(-1, game.getNumberFromLetter('3'));
+    }
+
 }
