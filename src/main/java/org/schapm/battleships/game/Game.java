@@ -32,4 +32,10 @@ public class Game {
         }
     }
 
+    public int getNumberFromLetter(char letter) {
+        int letterToReturn = Character.toLowerCase(letter) - 'a' + 1;
+
+        return letterToReturn > 0 && letterToReturn < 27 ? letterToReturn : -1;
+    }
+
 }
