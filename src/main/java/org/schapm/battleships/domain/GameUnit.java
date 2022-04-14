@@ -26,7 +26,6 @@ public class GameUnit {
         this.ships = new ArrayList<>();
         createShips();
         setShipCoordinates();
-        setShipCoordinatesValueToShipInitialAndSetShip();
     }
 
     private void createShips() {
@@ -62,15 +61,19 @@ public class GameUnit {
 
             for (int i = 0; i < ship.getLength(); i++) {
                 if (ship.getOrientation().equals(Ship.Orientation.HORIZONTAL)) {
-                    coordinates[i] = ocean[randomRowOrColumn][randomWithinRowOrColumn + i];
+                    coordinates[i] = ocean[randomRowOrColumn + i][randomWithinRowOrColumn];
                 }
 
                 if (ship.getOrientation().equals(Ship.Orientation.VERTICAL)) {
-                    coordinates[i] = ocean[randomRowOrColumn + i][randomWithinRowOrColumn];
+                    coordinates[i] = ocean[randomRowOrColumn][randomWithinRowOrColumn + i];
                 }
             }
 
             ship.addCoordinates(coordinates);
+            for (Coordinate coordinate : ship.getCoordinates()) {
+                coordinate.setValue(ship.getNameInitial());
+                coordinate.setShip(ship);
+            }
         }
     }
 
@@ -82,28 +85,18 @@ public class GameUnit {
         }
     }
 
-    private void setShipCoordinatesValueToShipInitialAndSetShip() {
-        for (Ship ship : ships) {
-            for (Coordinate coordinate : ship.getCoordinates()) {
-                coordinate.setValue(ship.getNameInitial());
-                coordinate.setShip(ship);
-            }
-        }
-    }
-
     private boolean wouldShipOverlapAnother(Ship ship, int randomRowOrColumn, int randomWithinRowOrColumn) {
         for (int i = 0; i < ship.getLength(); i++) {
             switch (ship.getOrientation()) {
                 case HORIZONTAL:
-                    if (ocean[randomRowOrColumn][randomWithinRowOrColumn + i].hasShip()) {
-                        return true;
-                    }
-                    break;
-                case VERTICAL:
                     if (ocean[randomRowOrColumn + i][randomWithinRowOrColumn].hasShip()) {
                         return true;
                     }
                     break;
+                case VERTICAL:
+                    if (ocean[randomRowOrColumn][randomWithinRowOrColumn + i].hasShip()) {
+                        return true;
+                    }
             }
         }
 
