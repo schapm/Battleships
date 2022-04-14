@@ -88,11 +88,11 @@ public class Game {
         System.out.println();
     }
 
-    public String printGuessOutcome(String outcome) {
+    public String printGuessOutcome(String outcome, Coordinate guessCoordinate) {
         String userFriendlyOutcome = "";
 
         if (outcome.equals(HIT)) {
-            userFriendlyOutcome = "HIT";
+            userFriendlyOutcome = "HIT: " + guessCoordinate.getShip().getName().toUpperCase();
         }
 
         if (outcome.equals(MISS)) {
