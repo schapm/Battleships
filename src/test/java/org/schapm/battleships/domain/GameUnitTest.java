@@ -153,11 +153,15 @@ public class GameUnitTest {
         ArrayList<Coordinate> allCoordinates = new ArrayList<>();
         Set<Coordinate> allCoordinatesAsSet = new HashSet<>();
 
-        for (Ship ship : gameUnit.getShips()) {
-            allCoordinates.addAll(ship.getCoordinates());
-            allCoordinatesAsSet.addAll(ship.getCoordinates());
+        for (int i = 0; i < 20; i++) {
+            gameUnit = new GameUnit();
+
+            for (Ship ship : gameUnit.getShips()) {
+                allCoordinates.addAll(ship.getCoordinates());
+                allCoordinatesAsSet.addAll(ship.getCoordinates());
+            }
         }
-        
+
         assertEquals(allCoordinatesAsSet.size(), allCoordinates.size(), "Duplicate coordinates were found in different ships");
     }
 
