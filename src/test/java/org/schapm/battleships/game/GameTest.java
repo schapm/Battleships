@@ -96,4 +96,13 @@ public class GameTest {
         assertEquals(-1, game.getNumberFromLetter('3'));
     }
 
+    @Test
+    public void numberCanBeConvertedToLetter() {
+        assertEquals('a', game.getLetterFromNumber(1));
+        assertEquals('p', game.getLetterFromNumber(16));
+        assertEquals('z', game.getLetterFromNumber(26));
+        assertEquals(1, game.getLetterFromNumber(3000));
+        assertEquals(1, game.getLetterFromNumber(-1));
+    }
+
 }
