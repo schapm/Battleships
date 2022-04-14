@@ -23,6 +23,7 @@ public class GameTest {
 
     private final String regexToMatchCoordinateOutput = "\\[(.*?)\\]";
     private final String regexToMatchXAxisTicks = "(.*1.*2.*3.*4.*5.*6.*7.*8.*9.*10.*)";
+    private final String regexToMatchYAxisTicks = "(.*A.*B.*C.*D.*E.*F.*G.*H.*I.*J.*)";
 
     @BeforeEach
     public void setUp() {
@@ -99,7 +100,24 @@ public class GameTest {
             tickOccurrences++;
         }
 
-        assertEquals(1, tickOccurrences, "There should only be one set of X-axis ticks");
+        assertEquals(1, tickOccurrences, "There should be one set of X-axis ticks");
+    }
+
+    @Test
+    public void printedGridPrintsYAxisTicks() {
+        game.printGrid(game.player.getGameUnit().getOcean());
+
+        String removeEverythingFromGridButLetters = outContent.toString().replaceAll("[^A-Z]", "");
+
+        Pattern pattern = Pattern.compile(regexToMatchYAxisTicks);
+        Matcher matcher = pattern.matcher(removeEverythingFromGridButLetters);
+
+        int tickOccurrences = 0;
+        while (matcher.find()) {
+            tickOccurrences++;
+        }
+
+        assertEquals(1, tickOccurrences, "There should be one set of Y-axis ticks");
     }
 
     @Test
