@@ -62,4 +62,18 @@ public class Game {
         return guess.matches(regex);
     }
 
+    public Coordinate playerGuessToCoordinate(String guess) {
+        String [] split = guess.split("");
+        int letterAsXValue = getNumberFromLetter(split[0].toLowerCase().charAt(0)) - 1;
+        int numberAsYValue;
+        
+        if (guess.length() == 3) {
+            numberAsYValue = Integer.parseInt(split[1] + split[2]) - 1;
+        } else {
+            numberAsYValue = Integer.parseInt(split[1]) - 1;
+        }
+
+        return player.getOpponent().getGameUnit().getOcean()[letterAsXValue][numberAsYValue];
+    }
+
 }
