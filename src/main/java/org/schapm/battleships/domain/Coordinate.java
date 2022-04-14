@@ -60,4 +60,16 @@ public class Coordinate {
     public int getY() {
         return this.y;
     }
+
+    public String getUserFriendlyValue(String value) {
+        switch (value) {
+            case HIT:
+                return "HIT";
+            case MISS:
+                return "MISS";
+            default:
+                return EMPTY;
+        }
+    }
+
 }
