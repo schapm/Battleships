@@ -36,6 +36,9 @@ public class Game {
             }
             System.out.println();
             for (int col = 0; col < grid.length; col++) {
+                if (col == 0) {
+                    System.out.print(Character.toUpperCase(getLetterFromNumber(row + 1)) + padding);
+                }
                 System.out.print("[" + grid[row][col].getValue() + "]");
             }
         }
