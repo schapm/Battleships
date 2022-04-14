@@ -187,4 +187,13 @@ public class GameTest {
                 "Expected return value to contain '" + hitCoordinate.getShip().getName() + "'. Instead, it is " + game.printGuessOutcome(guessOutcomeOfHit, hitCoordinate));
     }
 
+    @Test
+    public void playerGuessOutcomeOfHitWhichSinksShipAlsoOutputsThatItsBeenSunk() {
+        Coordinate hitCoordinate = game.player.getOpponent().getGameUnit().getShips().get(0).getCoordinates().get(0);
+        hitCoordinate.getShip().getCoordinates().clear(); // sink the ship
+        String guessOutcomeOfHit = game.player.guessOutcome(hitCoordinate);
+        assertTrue(game.printGuessOutcome(guessOutcomeOfHit, hitCoordinate).contains("SUNK"),
+                "Expected return value to contain 'SUNK'. Instead, it is " + game.printGuessOutcome(guessOutcomeOfHit, hitCoordinate));
+    }
+
 }
