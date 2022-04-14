@@ -89,20 +89,21 @@ public class Game {
     }
 
     public String printGuessOutcome(String outcome, Coordinate guessCoordinate) {
-        String userFriendlyOutcome = "";
+        StringBuilder userFriendlyOutcome = new StringBuilder();
 
         if (outcome.equals(HIT)) {
-            userFriendlyOutcome = "HIT: " + guessCoordinate.getShip().getName().toUpperCase();
+            userFriendlyOutcome.append("HIT: ")
+                    .append(guessCoordinate.getShip().getName().toUpperCase());
             if (guessCoordinate.getShip().isShipSunk()) {
-                userFriendlyOutcome = userFriendlyOutcome + " SUNK!";
+                userFriendlyOutcome.append(" SUNK!");
             }
         }
 
         if (outcome.equals(MISS)) {
-            userFriendlyOutcome = "MISS";
+            userFriendlyOutcome.append("MISS");
         }
 
-        return userFriendlyOutcome;
+        return userFriendlyOutcome.toString();
     }
 
     public int getNumberFromLetter(char letter) {
