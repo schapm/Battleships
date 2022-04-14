@@ -3,6 +3,7 @@ package org.schapm.battleships.game;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.schapm.battleships.domain.Coordinate;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -154,6 +155,16 @@ public class GameTest {
         assertFalse(game.validateUserInput(invalidInput1), "Expected false for " + invalidInput1);
         assertFalse(game.validateUserInput(invalidInput2), "Expected false for " + invalidInput2);
         assertFalse(game.validateUserInput(invalidInput3), "Expected false for " + invalidInput3);
+    }
+
+    @Test
+    public void playerGuessIsConvertedIntoACoordinate() {
+        String guess = "A5";
+        Coordinate playerGuessAsCoordinate = game.playerGuessToCoordinate(guess);
+
+        assertSame(game.player.getOpponent().getGameUnit().getOcean()[playerGuessAsCoordinate.getX()][playerGuessAsCoordinate.getY()], playerGuessAsCoordinate,
+                "The coordinate the player guessed is not the same as the coordinate on the opponent ocean");
+        assertTrue(playerGuessAsCoordinate.getX() == 0 && playerGuessAsCoordinate.getY() == 4, "A guess of 'A5' was not equal to X: 0 and Y: 4");
     }
 
 }
