@@ -38,4 +38,8 @@ public class Game {
         return letterToReturn > 0 && letterToReturn < 27 ? letterToReturn : -1;
     }
 
+    public char getLetterFromNumber(int number) {
+        return number > 0 && number < 27 ? (char) (number + 96) : 1;
+    }
+
 }
