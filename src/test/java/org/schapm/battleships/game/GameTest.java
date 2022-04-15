@@ -212,4 +212,21 @@ public class GameTest {
         assertTrue(playerShouldWin.contains(game.player.getName().toUpperCase() + " WINS"), "Output should contain '" + game.player.getName().toUpperCase() + " WINS'");
     }
 
+    @Test
+    public void gamePrintsGridsAFinalTimeWhenGameEnds() {
+        game.opponent.getGameUnit().getShips().clear();
+        game.getWinner();
+
+        Pattern pattern = Pattern.compile(regexToMatchCoordinateOutput);
+        Matcher matcher = pattern.matcher(outContent.toString());
+
+        int coordinateOccurrences = 0;
+        while (matcher.find()) {
+            coordinateOccurrences++;
+        }
+
+        assertEquals((OCEAN_SIZE * OCEAN_SIZE * 2), coordinateOccurrences, "Number of coordinates does not match the output. Expected " +
+                (OCEAN_SIZE * OCEAN_SIZE * 2) + ". Instead, it is " + coordinateOccurrences);
+    }
+
 }
