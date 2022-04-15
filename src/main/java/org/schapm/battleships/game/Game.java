@@ -33,6 +33,8 @@ public class Game {
             }
             opponentTurn();
         }
+
+        getWinner();
     }
 
     protected void playerTurn() {
@@ -76,6 +78,14 @@ public class Game {
     public boolean isWinner() {
         return player.getGameUnit().getShips().isEmpty()
                 || opponent.getGameUnit().getShips().isEmpty();
+    }
+
+    public void getWinner() {
+        if (player.getGameUnit().getShips().isEmpty()) {
+            System.out.println(player.getName().toUpperCase() + " WINS!");
+        } else {
+            System.out.println(opponent.getName().toUpperCase() + " WINS!");
+        }
     }
 
     public void printGrid(Coordinate[][] grid) {
