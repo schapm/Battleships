@@ -81,6 +81,9 @@ public class Game {
     }
 
     public void getWinner() {
+        printGrid(player.getGameUnit().getGuesses());
+        printGrid(player.getGameUnit().getOcean());
+
         if (player.getGameUnit().getShips().isEmpty()) {
             System.out.println(player.getName().toUpperCase() + " WINS!");
         } else {
