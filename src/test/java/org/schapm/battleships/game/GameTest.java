@@ -203,4 +203,13 @@ public class GameTest {
         assertEquals("A1", guessPrintedToConsole, "String did not equal 'A1'. Instead, it is " + guessPrintedToConsole);
     }
 
+    @Test
+    public void gamePrintsWinnerWhenGameEnds() {
+        game.player.getGameUnit().getShips().clear();
+        game.getWinner();
+
+        String playerShouldWin = outContent.toString();
+        assertTrue(playerShouldWin.contains(game.player.getName().toUpperCase() + " WINS"), "Output should contain '" + game.player.getName().toUpperCase() + " WINS'");
+    }
+
 }
