@@ -206,7 +206,7 @@ public class GameTest {
     @Test
     public void gamePrintsWinnerWhenGameEnds() {
         game.player.getGameUnit().getShips().clear();
-        game.getWinner();
+        game.gameEnd();
 
         String playerShouldWin = outContent.toString();
         assertTrue(playerShouldWin.contains(game.player.getName().toUpperCase() + " WINS"), "Output should contain '" + game.player.getName().toUpperCase() + " WINS'");
@@ -215,7 +215,7 @@ public class GameTest {
     @Test
     public void gamePrintsGridsAFinalTimeWhenGameEnds() {
         game.opponent.getGameUnit().getShips().clear();
-        game.getWinner();
+        game.gameEnd();
 
         Pattern pattern = Pattern.compile(regexToMatchCoordinateOutput);
         Matcher matcher = pattern.matcher(outContent.toString());

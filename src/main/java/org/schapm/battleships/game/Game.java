@@ -34,7 +34,7 @@ public class Game {
             opponentTurn();
         }
 
-        getWinner();
+        gameEnd();
     }
 
     protected void playerTurn() {
@@ -80,7 +80,7 @@ public class Game {
                 || opponent.getGameUnit().getShips().isEmpty();
     }
 
-    public void getWinner() {
+    public void gameEnd() {
         printGrid(player.getGameUnit().getGuesses());
         printGrid(player.getGameUnit().getOcean());
 
