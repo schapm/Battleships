@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.schapm.battleships.domain.Coordinate.*;
 
 public class CoordinateTest {
 
@@ -28,8 +27,8 @@ public class CoordinateTest {
 
     @Test
     public void coordinateCanHaveAValueOfHitMissOrShipInitial() {
-        coordinate.setValue(HIT);
-        assertEquals(HIT, coordinate.getValue(), "After setting the coordinate value to 'HIT', it does not have the same value");
+        coordinate.setValue(Coordinate.HIT);
+        assertEquals(Coordinate.HIT, coordinate.getValue(), "After setting the coordinate value to 'HIT', it does not have the same value");
 
         coordinate.setValue(Coordinate.MISS);
         assertEquals(Coordinate.MISS, coordinate.getValue(), "After setting the coordinate value to 'MISS', it does not have the same value");
@@ -61,16 +60,6 @@ public class CoordinateTest {
 
         coordinate.setShip(new Battleship());
         assertTrue(coordinate.hasShip(), "Coordinate should return true after the ship has been set");
-    }
-
-    @Test
-    public void coordinateCanReturnUserFriendlyGuessOutcome() {
-        assertEquals("HIT", coordinate.getUserFriendlyValue(HIT), "Expected value of 'HIT'");
-        assertEquals("MISS", coordinate.getUserFriendlyValue(MISS), "Expected value of 'MISS");
-
-        assertEquals(EMPTY, coordinate.getUserFriendlyValue("MISS"), "Expected value of 'EMPTY'");
-        assertEquals(EMPTY, coordinate.getUserFriendlyValue("1000"), "Expected value of 'EMPTY'");
-        assertEquals(EMPTY, coordinate.getUserFriendlyValue("Marmalade"), "Expected value of 'EMPTY");
     }
 
 }
