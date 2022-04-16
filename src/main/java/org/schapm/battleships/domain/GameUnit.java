@@ -10,8 +10,8 @@ import java.util.Random;
 public class GameUnit {
 
     public final static int OCEAN_SIZE = 10;
-    public final static int NUM_OF_BATTLESHIPS = 2;
-    public final static int NUM_OF_DESTROYERS = 1;
+    private final static int NUM_OF_BATTLESHIPS = 2;
+    private final static int NUM_OF_DESTROYERS = 1;
 
     private final Coordinate[][] ocean;
     private final Coordinate[][] guesses;

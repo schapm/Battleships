@@ -15,7 +15,7 @@ public class Game {
 
     protected final HumanPlayer player;
     protected final ComputerPlayer opponent;
-    protected final Scanner scanner;
+    private final Scanner scanner;
 
     public Game() {
         this.player = new HumanPlayer("Player");
@@ -37,7 +37,7 @@ public class Game {
         gameEnd();
     }
 
-    protected void playerTurn() {
+    private void playerTurn() {
         printGrid(player.getGameUnit().getGuesses());
         printGrid(player.getGameUnit().getOcean());
 
@@ -64,7 +64,7 @@ public class Game {
         System.out.println(printGuessOutcome(guessOutcome, guessAsCoordinate));
     }
 
-    protected void opponentTurn() {
+    private void opponentTurn() {
         System.out.println("Opponent guesses");
         System.out.print("> ");
 

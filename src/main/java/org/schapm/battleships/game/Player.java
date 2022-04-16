@@ -4,8 +4,6 @@ import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.GameUnit;
 import org.schapm.battleships.domain.Ship;
 
-import java.util.Objects;
-
 import static org.schapm.battleships.domain.Coordinate.*;
 
 /**
