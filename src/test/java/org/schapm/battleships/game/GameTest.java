@@ -75,7 +75,7 @@ public class GameTest {
 
     @Test
     public void playerGridsCanBePrinted() {
-        game.printGrid(game.player.getGameUnit().getOcean());
+        game.printGrid(game.player.getGameUnit().getOcean(), "");
 
         Pattern pattern = Pattern.compile(regexToMatchCoordinateOutput);
         Matcher matcher = pattern.matcher(outContent.toString());
@@ -91,7 +91,7 @@ public class GameTest {
 
     @Test
     public void printedGridPrintsXAxisTicks() {
-        game.printGrid(game.player.getGameUnit().getOcean());
+        game.printGrid(game.player.getGameUnit().getOcean(), "");
 
         Pattern pattern = Pattern.compile(regexToMatchXAxisTicks);
         Matcher matcher = pattern.matcher(outContent.toString());
@@ -106,7 +106,7 @@ public class GameTest {
 
     @Test
     public void printedGridPrintsYAxisTicks() {
-        game.printGrid(game.player.getGameUnit().getOcean());
+        game.printGrid(game.player.getGameUnit().getOcean(), "");
 
         String removeEverythingFromGridButLetters = outContent.toString().replaceAll("[^A-Z]", "");
 

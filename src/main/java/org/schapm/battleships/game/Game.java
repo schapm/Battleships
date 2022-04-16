@@ -17,6 +17,9 @@ public class Game {
     protected final ComputerPlayer opponent;
     private final Scanner scanner;
 
+    private final String GUESSES_LABEL = "GUESSES (OPPONENT GRID)";
+    private final String OCEAN_LABEL = "OCEAN (YOU)";
+
     public Game() {
         this.player = new HumanPlayer("Player");
         this.opponent = new ComputerPlayer("Computer");
@@ -38,8 +41,8 @@ public class Game {
     }
 
     private void playerTurn() {
-        printGrid(player.getGameUnit().getGuesses());
-        printGrid(player.getGameUnit().getOcean());
+        printGrid(player.getGameUnit().getGuesses(), GUESSES_LABEL);
+        printGrid(player.getGameUnit().getOcean(), OCEAN_LABEL);
 
         System.out.println("What's your guess?");
         System.out.print("> ");
@@ -81,8 +84,8 @@ public class Game {
     }
 
     public void gameEnd() {
-        printGrid(player.getGameUnit().getGuesses());
-        printGrid(player.getGameUnit().getOcean());
+        printGrid(player.getGameUnit().getGuesses(), GUESSES_LABEL);
+        printGrid(player.getGameUnit().getOcean(), OCEAN_LABEL);
 
         if (player.getGameUnit().getShips().isEmpty()) {
             System.out.println(player.getName().toUpperCase() + " WINS!");
@@ -91,7 +94,11 @@ public class Game {
         }
     }
 
-    public void printGrid(Coordinate[][] grid) {
+    public void printGrid(Coordinate[][] grid, String label) {
+        System.out.println("---------------------------------");
+        System.out.println(label);
+        System.out.println("---------------------------------");
+
         String padding = "  ";
         for (int row = 0; row < grid.length; row++) {
             if (row == 0) {
