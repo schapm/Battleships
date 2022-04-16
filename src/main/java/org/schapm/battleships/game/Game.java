@@ -29,6 +29,11 @@ public class Game {
     }
 
     public void start() {
+        System.out.println("=======================");
+        System.out.println("----- BATTLESHIPS -----");
+        System.out.println("=======================");
+        System.out.println("Welcome, " + player.getName());
+
         while (!isWinner()) {
             playerTurn();
             if (isWinner()) {
@@ -44,7 +49,7 @@ public class Game {
         printGrid(player.getGameUnit().getGuesses(), GUESSES_LABEL);
         printGrid(player.getGameUnit().getOcean(), OCEAN_LABEL);
 
-        System.out.println("What's your guess?");
+        System.out.println("\n=== " + player.getName().toUpperCase() + " TURN ===");
         System.out.print("> ");
 
         String guess = scanner.nextLine();
@@ -68,7 +73,7 @@ public class Game {
     }
 
     private void opponentTurn() {
-        System.out.println("Opponent guesses");
+        System.out.println("\n=== " + opponent.getName().toUpperCase() + " TURN ===");
         System.out.print("> ");
 
         Coordinate opponentGuessAsCoordinate = opponent.guess();
@@ -88,9 +93,9 @@ public class Game {
         printGrid(player.getGameUnit().getOcean(), OCEAN_LABEL);
 
         if (player.getGameUnit().getShips().isEmpty()) {
-            System.out.println(player.getName().toUpperCase() + " WINS!");
+            System.out.println("\n" + player.getName().toUpperCase() + " WINS!");
         } else {
-            System.out.println(opponent.getName().toUpperCase() + " WINS!");
+            System.out.println("\n" + opponent.getName().toUpperCase() + " WINS!");
         }
     }
 
