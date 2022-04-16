@@ -205,7 +205,7 @@ public class GameTest {
 
     @Test
     public void gamePrintsWinnerWhenGameEnds() {
-        game.player.getGameUnit().getShips().clear();
+        game.opponent.getGameUnit().getShips().clear();
         game.gameEnd();
 
         String playerShouldWin = outContent.toString();

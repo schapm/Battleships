@@ -92,7 +92,7 @@ public class Game {
         printGrid(player.getGameUnit().getGuesses(), GUESSES_LABEL);
         printGrid(player.getGameUnit().getOcean(), OCEAN_LABEL);
 
-        if (player.getGameUnit().getShips().isEmpty()) {
+        if (opponent.getGameUnit().getShips().isEmpty()) {
             System.out.println("\n" + player.getName().toUpperCase() + " WINS!");
         } else {
             System.out.println("\n" + opponent.getName().toUpperCase() + " WINS!");
