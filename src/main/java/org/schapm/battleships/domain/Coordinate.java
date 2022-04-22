@@ -45,7 +45,7 @@ public class Coordinate {
         return this.ship;
     }
 
-    public void setShip(Ship ship) {
+    public void setShip(ShipInterface ship) {
         this.ship = ship;
     }
 
