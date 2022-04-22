@@ -16,7 +16,7 @@ public class GameUnit {
     private final Coordinate[][] ocean;
     private final Coordinate[][] guesses;
 
-    private final ArrayList<Ship> ships;
+    private final ArrayList<ShipInterface> ships;
 
     public GameUnit() {
         this.ocean = new Coordinate[OCEAN_SIZE][OCEAN_SIZE];
@@ -45,7 +45,7 @@ public class GameUnit {
         int randomRowOrColumn;
         int randomWithinRowOrColumn;
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             Coordinate[] coordinates = new Coordinate[ship.getLength()];
 
             randomRowOrColumn = random.nextInt(OCEAN_SIZE);
@@ -54,7 +54,7 @@ public class GameUnit {
 
             while (randomRowOrColumn + ship.getLength() > OCEAN_SIZE
                     || randomWithinRowOrColumn + ship.getLength() > OCEAN_SIZE
-                    || wouldShipOverlapAnother(ship, randomRowOrColumn, randomWithinRowOrColumn)) {
+                    || wouldShipOverlapAnother(ship.getShip(), randomRowOrColumn, randomWithinRowOrColumn)) {
                 randomRowOrColumn = random.nextInt(OCEAN_SIZE);
                 randomWithinRowOrColumn = random.nextInt(OCEAN_SIZE);
             }
@@ -72,7 +72,7 @@ public class GameUnit {
             ship.addCoordinates(coordinates);
             for (Coordinate coordinate : ship.getCoordinates()) {
                 coordinate.setValue(ship.getNameInitial());
-                coordinate.setShip(ship);
+                coordinate.setShip(ship.getShip());
             }
         }
     }
@@ -111,7 +111,7 @@ public class GameUnit {
         return this.guesses;
     }
 
-    public ArrayList<Ship> getShips() {
+    public ArrayList<ShipInterface> getShips() {
         return this.ships;
     }
 
