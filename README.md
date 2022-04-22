@@ -44,7 +44,6 @@ There are a number of improvements that could be made to the game, such as;
 - Improving the styling of the grid, such as using different colours and text styles and making it easier to differenciate between hits, misses and own ships.
 - Currently, each guess the opponent makes is completely random - even if the last guess resulted in a hit.
 - Currently, the grid size is fixed at 10x10. The tests and code were developed with this potential improvement in mind.
-- Reduced coupling between classes.
 
 ## Class Diagrams
 ### Initial Diagram
