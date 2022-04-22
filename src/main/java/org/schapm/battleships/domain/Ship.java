@@ -6,7 +6,7 @@ import java.util.*;
  * @author schapm
  */
 
-public abstract class Ship {
+public abstract class Ship implements ShipInterface {
 
     private final String name;
     private final int length;
@@ -32,6 +32,10 @@ public abstract class Ship {
         } else {
             return Orientation.VERTICAL;
         }
+    }
+
+    public Ship getShip() {
+        return this;
     }
 
     public String getName() {
