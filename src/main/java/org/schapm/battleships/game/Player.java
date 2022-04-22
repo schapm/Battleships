@@ -2,7 +2,7 @@ package org.schapm.battleships.game;
 
 import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.GameUnit;
-import org.schapm.battleships.domain.Ship;
+import org.schapm.battleships.domain.ShipInterface;
 
 import static org.schapm.battleships.domain.Coordinate.*;
 
@@ -47,7 +47,7 @@ public abstract class Player implements PlayerInterface {
         Coordinate playerGuessesCoordinate = getGameUnit().getGuesses()[coordinate.getX()][coordinate.getY()];
 
         if (coordinate.hasShip()) {
-            Ship ship = coordinate.getShip();
+            ShipInterface ship = coordinate.getShip();
             playerGuessesCoordinate.setValue(HIT);
 
             opponentOceanCoordinate.setValue(HIT);

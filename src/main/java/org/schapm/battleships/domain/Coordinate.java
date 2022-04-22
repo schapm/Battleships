@@ -11,7 +11,7 @@ public class Coordinate {
     public final static String EMPTY = " ";
 
     private String value;
-    private Ship ship;
+    private ShipInterface ship;
 
     private final int x;
     private final int y;
@@ -41,7 +41,7 @@ public class Coordinate {
         this.value = String.valueOf(shipInitial);
     }
 
-    public Ship getShip() {
+    public ShipInterface getShip() {
         return this.ship;
     }
 
