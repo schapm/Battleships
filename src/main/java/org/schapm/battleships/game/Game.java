@@ -1,7 +1,9 @@
 package org.schapm.battleships.game;
 
 import org.schapm.battleships.domain.Coordinate;
+import org.schapm.battleships.domain.GameUnit;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import static org.schapm.battleships.domain.Coordinate.*;
@@ -13,8 +15,8 @@ import static org.schapm.battleships.domain.GameUnit.OCEAN_SIZE;
 
 public class Game {
 
-    protected final HumanPlayer player;
-    protected final ComputerPlayer opponent;
+    protected final PlayerInterface player;
+    protected final PlayerInterface opponent;
     private final Scanner scanner;
 
     private final String GUESSES_LABEL = "GUESSES (OPPONENT GRID)";
@@ -23,8 +25,8 @@ public class Game {
     public Game() {
         this.player = new HumanPlayer("Player");
         this.opponent = new ComputerPlayer("Computer");
-        this.player.setOpponent(opponent);
-        this.opponent.setOpponent(player);
+        this.player.setOpponent(opponent.getPlayer());
+        this.opponent.setOpponent(player.getPlayer());
         this.scanner = new Scanner(System.in);
     }
 
@@ -76,7 +78,7 @@ public class Game {
         System.out.println("\n=== " + opponent.getName().toUpperCase() + " TURN ===");
         System.out.print("> ");
 
-        Coordinate opponentGuessAsCoordinate = opponent.guess();
+        Coordinate opponentGuessAsCoordinate = computerGuess();
         String guessOutcome = opponent.guessOutcome(opponentGuessAsCoordinate);
 
         System.out.println(opponentGuessToUserFriendlyGuess(opponentGuessAsCoordinate));
@@ -179,6 +181,14 @@ public class Game {
         }
 
         return player.getOpponent().getGameUnit().getOcean()[letterAsXValue][numberAsYValue];
+    }
+
+    protected Coordinate computerGuess() {
+        Random random = new Random();
+        int x = random.nextInt(GameUnit.OCEAN_SIZE);
+        int y = random.nextInt(GameUnit.OCEAN_SIZE);
+
+        return opponent.getOpponent().getGameUnit().getOcean()[x][y];
     }
 
 }
