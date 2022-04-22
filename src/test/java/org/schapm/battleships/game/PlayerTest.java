@@ -57,8 +57,9 @@ public class PlayerTest {
 
     @Test
     public void computerPlayerGeneratesRandomGuess() {
-        Coordinate firstCoordinate = computerPlayer.guess();
-        Coordinate secondCoordinate = computerPlayer.guess();
+        Game game = new Game();
+        Coordinate firstCoordinate = game.computerGuess();
+        Coordinate secondCoordinate = game.computerGuess();
 
         assertTrue(firstCoordinate.getX() != secondCoordinate.getX() || firstCoordinate.getY() != secondCoordinate.getY(),
                 "Guesses should not be the same. First: x=" + firstCoordinate.getX() + " y=" + firstCoordinate.getY() +
@@ -67,8 +68,9 @@ public class PlayerTest {
 
     @Test
     public void computerPlayerGuessCorrespondsToOpponentOceanCoordinate() {
-        Coordinate guessCoordinate = computerPlayer.guess();
-        Coordinate oceanCoordinate = computerPlayer.getOpponent().getGameUnit().getOcean()[guessCoordinate.getX()][guessCoordinate.getY()];
+        Game game = new Game();
+        Coordinate guessCoordinate = game.computerGuess();
+        Coordinate oceanCoordinate = game.player.getGameUnit().getOcean()[guessCoordinate.getX()][guessCoordinate.getY()];
 
         assertNotNull(guessCoordinate, COMPUTER_PLAYER_NAME + " coordinate guess should not be null");
         assertNotNull(oceanCoordinate, "Opponent ocean coordinate from " + COMPUTER_PLAYER_NAME + " guess should not null");
@@ -77,12 +79,13 @@ public class PlayerTest {
 
     @Test
     public void playerGuessReturnsHitOrMiss() {
-        Coordinate coordinate = computerPlayer.guess();
+        Game game = new Game();
+        Coordinate coordinate = game.computerGuess();
         coordinate.setShip(null);
-        assertEquals(Coordinate.MISS, computerPlayer.guessOutcome(coordinate), "No ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'MISS'");
+        assertEquals(Coordinate.MISS, game.opponent.guessOutcome(coordinate), "No ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'MISS'");
 
         coordinate.setShip(new Destroyer());
-        assertEquals(Coordinate.HIT, computerPlayer.guessOutcome(coordinate), "Ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'HIT'");
+        assertEquals(Coordinate.HIT, game.opponent.guessOutcome(coordinate), "Ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'HIT'");
     }
 
     @Test
