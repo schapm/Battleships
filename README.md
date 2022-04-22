@@ -9,8 +9,11 @@ Comparing the initial and the finished project class diagrams, they are quite di
 Initially, the GameState class was added for the intention of being used to control the game loop, and the UserInterface class to separate this into one class.
 
 In the end, the GameState class was removed in favour of a simpler game loop in the Game class, and the UserInterface class merged into the Game class.
+
 The GameState and UserInterface classes made this simple game more complex and overengineered than it needed to be, something realised when thinking about the unit tests for the Game, GameState and UserInterface classes.
 There was also a high level of coupling between these classes.
+
+To further reduce the coupling between classes, the PlayerInterface and ShipInterface were implemented.
 
 ## Building
 ```
