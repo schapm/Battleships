@@ -31,12 +31,12 @@ or
 2) Run the game from the JAR;
 ```
 cd target
-java -jar Battleships-1.0-SNAPSHOT.jar
+java -jar Battleships-1.1-SNAPSHOT.jar
 ```
 
 You can also download a pre-built JAR from [Releases](https://github.com/schapm/Battleships/releases), and run it with;
 
-`java -jar Battleships.jar`
+`java -jar Battleships-1.1-SNAPSHOT.jar`
 
 
 ## Potential Improvements
