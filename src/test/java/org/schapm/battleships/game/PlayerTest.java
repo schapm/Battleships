@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.schapm.battleships.domain.Coordinate;
 import org.schapm.battleships.domain.Destroyer;
 import org.schapm.battleships.domain.Ship;
+import org.schapm.battleships.domain.ShipInterface;
 
 import java.util.ArrayList;
 
@@ -139,7 +140,7 @@ public class PlayerTest {
 
     @Test
     public void playerGuessThatSinksShipRemovesShipFromGameUnit() {
-        Ship shipToSink = computerPlayer.getOpponent().getGameUnit().getShips().get(0);
+        ShipInterface shipToSink = computerPlayer.getOpponent().getGameUnit().getShips().get(0);
         Coordinate coordinate = shipToSink.getCoordinates().get(0);
         shipToSink.getCoordinates().clear();
 

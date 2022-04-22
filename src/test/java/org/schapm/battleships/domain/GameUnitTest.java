@@ -2,7 +2,6 @@ package org.schapm.battleships.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.CollectionUtils;
 
 import java.util.*;
 
@@ -47,18 +46,18 @@ public class GameUnitTest {
 
     @Test
     public void gameUnitCreatesCorrectNumberOfShips() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
         assertEquals(EXPECTED_SHIPS_SIZE, ships.size(), "Expected a size of " + EXPECTED_SHIPS_SIZE + " for ships. Instead, it is " + ships.size());
     }
 
     @Test
     public void gameUnitCreatesCorrectTypesOfShips() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
 
         int battleships = 0;
         int destroyers = 0;
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             if (ship instanceof Battleship) {
                 battleships++;
             }
@@ -74,36 +73,36 @@ public class GameUnitTest {
 
     @Test
     public void gameUnitAssignsCreatedShipsWithCoordinate() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             assertNotEquals(0, ship.getCoordinates().size(), "Coordinates for ship should not have a size of zero");
         }
     }
 
     @Test
     public void gameUnitAssignsCreatedShipsWithMultipleCoordinates() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             assertTrue(ship.getCoordinates().size() > 1, "Ship should have multiple coordinates");
         }
     }
 
     @Test
     public void gameUnitAssignsCreatedShipsWithRandomGridCoordinates() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
         ArrayList<Coordinate> shipsCoordinates = new ArrayList<>();
 
         GameUnit secondGameUnit = new GameUnit();
-        ArrayList<Ship> secondShips = secondGameUnit.getShips();
+        ArrayList<ShipInterface> secondShips = secondGameUnit.getShips();
         ArrayList<Coordinate> secondShipsCoordinates = new ArrayList<>();
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             shipsCoordinates.addAll(ship.getCoordinates());
         }
 
-        for (Ship ship : secondShips) {
+        for (ShipInterface ship : secondShips) {
             secondShipsCoordinates.addAll(ship.getCoordinates());
         }
 
@@ -112,10 +111,10 @@ public class GameUnitTest {
 
     @Test
     public void gameUnitAssignsCreatedShipsWithRandomSequentialGridCoordinatesWithinOceanLimits() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
         ArrayList<Coordinate> shipsCoordinates;
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             shipsCoordinates = ship.getCoordinates();
 
             // First coordinates
@@ -131,18 +130,18 @@ public class GameUnitTest {
 
     @Test
     public void gameUnitSetsShipsCoordinateValuesToShipInitial() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             ship.getCoordinates().forEach(coordinate -> assertEquals(String.valueOf(ship.getNameInitial()), coordinate.getValue(), "Coordinate value is not set to the ship's initial"));
         }
     }
 
     @Test
     public void gameUnitSetsAssignedShipCoordinatesToShip() {
-        ArrayList<Ship> ships = gameUnit.getShips();
+        ArrayList<ShipInterface> ships = gameUnit.getShips();
 
-        for (Ship ship : ships) {
+        for (ShipInterface ship : ships) {
             ship.getCoordinates().forEach(coordinate -> assertTrue(coordinate.hasShip(), "Coordinate does not have a ship"));
             ship.getCoordinates().forEach(coordinate -> assertSame(ship, coordinate.getShip(), "Coordinate's ship is not the same as the ship with the assigned coordinate"));
         }
@@ -156,7 +155,7 @@ public class GameUnitTest {
         for (int i = 0; i < 20; i++) {
             gameUnit = new GameUnit();
 
-            for (Ship ship : gameUnit.getShips()) {
+            for (ShipInterface ship : gameUnit.getShips()) {
                 allCoordinates.addAll(ship.getCoordinates());
                 allCoordinatesAsSet.addAll(ship.getCoordinates());
             }
