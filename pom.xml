@@ -6,7 +6,7 @@
 
     <groupId>org.schapm</groupId>
     <artifactId>Battleships</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <name>Battleships</name>
 
     <properties>
