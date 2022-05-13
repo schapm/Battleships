@@ -10,7 +10,7 @@ import static org.schapm.battleships.domain.Coordinate.*;
  * @author schapm
  */
 
-public abstract class Player implements PlayerInterface {
+public class Player implements PlayerInterface {
 
     private final String name;
     private final GameUnit gameUnit;

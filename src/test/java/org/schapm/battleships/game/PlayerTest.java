@@ -3,7 +3,6 @@ package org.schapm.battleships.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.schapm.battleships.domain.Coordinate;
-import org.schapm.battleships.domain.Destroyer;
 import org.schapm.battleships.domain.Ship;
 import org.schapm.battleships.domain.ShipInterface;
 
@@ -13,16 +12,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
 
-    private HumanPlayer humanPlayer;
-    private ComputerPlayer computerPlayer;
+    private Player humanPlayer;
+    private Player computerPlayer;
 
     private final static String HUMAN_PLAYER_NAME = "HumanPlayer";
     private final static String COMPUTER_PLAYER_NAME = "ComputerPlayer";
 
     @BeforeEach
     public void setupClass() {
-        humanPlayer = new HumanPlayer(HUMAN_PLAYER_NAME);
-        computerPlayer = new ComputerPlayer(COMPUTER_PLAYER_NAME);
+        humanPlayer = new Player(HUMAN_PLAYER_NAME);
+        computerPlayer = new Player(COMPUTER_PLAYER_NAME);
 
         humanPlayer.setOpponent(computerPlayer);
         computerPlayer.setOpponent(humanPlayer);
@@ -47,8 +46,8 @@ public class PlayerTest {
 
     @Test
     public void getAndSetPlayersOpponent() {
-        ComputerPlayer testComputerPlayer = new ComputerPlayer("TestComputerPlayer");
-        HumanPlayer testHumanPlayer = new HumanPlayer("TestHumanPlayer");
+        Player testComputerPlayer = new Player("TestComputerPlayer");
+        Player testHumanPlayer = new Player("TestHumanPlayer");
 
         humanPlayer.setOpponent(testComputerPlayer);
         assertSame(testComputerPlayer, humanPlayer.getOpponent(), testComputerPlayer.getName() + " and " + humanPlayer.getName() + " getOpponent() should be the same");

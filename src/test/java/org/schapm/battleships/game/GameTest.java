@@ -43,10 +43,10 @@ public class GameTest {
     @Test
     public void gameHasPlayerAndOpponent() {
         assertNotNull(game.player, "Player object should not be null");
-        assertTrue(game.player instanceof HumanPlayer, game.player.getName() + " is not an instance of class 'HumanPlayer'");
+        assertTrue(game.player instanceof Player, game.player.getName() + " is not an instance of class 'Player'");
 
         assertNotNull(game.opponent, "Opponent object should not be null");
-        assertTrue(game.opponent instanceof ComputerPlayer, game.opponent.getName() + " is not an instance of class 'ComputerPlayer'");
+        assertTrue(game.opponent instanceof Player, game.opponent.getName() + " is not an instance of class 'Player'");
     }
 
     @Test

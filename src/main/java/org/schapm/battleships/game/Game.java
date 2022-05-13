@@ -23,8 +23,8 @@ public class Game {
     private final String OCEAN_LABEL = "OCEAN (YOU)";
 
     public Game() {
-        this.player = new HumanPlayer("Player");
-        this.opponent = new ComputerPlayer("Computer");
+        this.player = new Player("Player");
+        this.opponent = new Player("Computer");
         this.player.setOpponent(opponent.getPlayer());
         this.opponent.setOpponent(player.getPlayer());
         this.scanner = new Scanner(System.in);
