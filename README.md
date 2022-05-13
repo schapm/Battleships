@@ -34,12 +34,12 @@ or
 2) Run the game from the JAR;
 ```
 cd target
-java -jar Battleships-1.1-SNAPSHOT.jar
+java -jar Battleships-1.2-SNAPSHOT.jar
 ```
 
 You can also download a pre-built JAR from [Releases](https://github.com/schapm/Battleships/releases), and run it with;
 
-`java -jar Battleships-1.1-SNAPSHOT.jar`
+`java -jar Battleships-1.2-SNAPSHOT.jar`
 
 
 ## Potential Improvements
@@ -50,30 +50,20 @@ There are a number of improvements that could be made to the game, such as;
 
 ## Class Diagrams
 ### Initial Diagram
-<p align="center">
-<img src="images/1-initial-class-diagram.jpg?raw=true"/>
-</p>
+![Initial class diagram](/images/1-initial-class-diagram.jpg)
 
 ### Finished Project Diagram
-<p align="center">
-<img src="images/2-finished-project-class-diagram.jpg?raw=true/">
-</p>
+![Finished project class diagram](/images/2-finished-project-class-diagram.jpg)
 
 ## Game Screenshots
 ### Starting The Game
-<p align="center">
-<img src="images/3-game-start.png?raw=true"/>
-</p>
+![Starting the game](/images/3-game-start.png)
 
 ### Player Guess
-<p align="center">
-<img src="images/4-player-guess.png?raw=true/">
-</p>
+![Player guessing](/images/4-player-guess.png)
 
 ### Player Wins
-<p align="center">
-<img src="images/5-game-win.png?raw=true/">
-</p>
+![Player wins](/images/5-game-win.png)
 
 ## Credits
 Class diagrams created with [yUML](https://yuml.me/).
