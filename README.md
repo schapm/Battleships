@@ -51,12 +51,12 @@ There are a number of improvements that could be made to the game, such as;
 ## Class Diagrams
 ### Initial Diagram
 <p align="center">
-<img src="images/1-initial-class-diagram.png?raw=true"/>
+<img src="images/1-initial-class-diagram.jpg?raw=true"/>
 </p>
 
 ### Finished Project Diagram
 <p align="center">
-<img src="images/2-finished-project-class-diagram.png?raw=true/">
+<img src="images/2-finished-project-class-diagram.jpg?raw=true/">
 </p>
 
 ## Game Screenshots
