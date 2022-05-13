@@ -10,8 +10,14 @@ import java.util.Random;
 public class GameUnit {
 
     public final static int OCEAN_SIZE = 10;
-    private final static int NUM_OF_BATTLESHIPS = 2;
-    private final static int NUM_OF_DESTROYERS = 1;
+    private final static int NUM_OF_BATTLESHIPS = 1;
+    private final static int NUM_OF_DESTROYERS = 2;
+
+    private final static String BATTLESHIP_NAME = "Battleship";
+    private final static int BATTLESHIP_LENGTH = 5;
+
+    private final static String DESTROYER_NAME = "Destroyer";
+    private final static int DESTROYER_LENGTH = 4;
 
     private final Coordinate[][] ocean;
     private final Coordinate[][] guesses;
@@ -30,12 +36,12 @@ public class GameUnit {
 
     private void createShips() {
         for (int i = 0; i < NUM_OF_BATTLESHIPS; i++) {
-            Battleship battleship = new Battleship();
+            Ship battleship = new Ship(BATTLESHIP_NAME, BATTLESHIP_LENGTH);
             ships.add(battleship);
         }
 
         for (int i = 0; i < NUM_OF_DESTROYERS; i++) {
-            Destroyer destroyer = new Destroyer();
+            Ship destroyer = new Ship(DESTROYER_NAME, DESTROYER_LENGTH);
             ships.add(destroyer);
         }
     }
@@ -54,7 +60,7 @@ public class GameUnit {
 
             while (randomRowOrColumn + ship.getLength() > OCEAN_SIZE
                     || randomWithinRowOrColumn + ship.getLength() > OCEAN_SIZE
-                    || wouldShipOverlapAnother(ship.getShip(), randomRowOrColumn, randomWithinRowOrColumn)) {
+                    || wouldShipOverlapAnother(ship, randomRowOrColumn, randomWithinRowOrColumn)) {
                 randomRowOrColumn = random.nextInt(OCEAN_SIZE);
                 randomWithinRowOrColumn = random.nextInt(OCEAN_SIZE);
             }
@@ -72,7 +78,7 @@ public class GameUnit {
             ship.addCoordinates(coordinates);
             for (Coordinate coordinate : ship.getCoordinates()) {
                 coordinate.setValue(ship.getNameInitial());
-                coordinate.setShip(ship.getShip());
+                coordinate.setShip(ship);
             }
         }
     }
@@ -85,7 +91,7 @@ public class GameUnit {
         }
     }
 
-    private boolean wouldShipOverlapAnother(Ship ship, int randomRowOrColumn, int randomWithinRowOrColumn) {
+    private boolean wouldShipOverlapAnother(ShipInterface ship, int randomRowOrColumn, int randomWithinRowOrColumn) {
         for (int i = 0; i < ship.getLength(); i++) {
             switch (ship.getOrientation()) {
                 case HORIZONTAL:

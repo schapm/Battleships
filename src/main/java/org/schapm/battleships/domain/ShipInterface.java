@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public interface ShipInterface {
 
-    Ship getShip();
     String getName();
     char getNameInitial();
     int getLength();
