@@ -11,8 +11,8 @@ public class GameUnitTest {
 
     private final static int EXPECTED_OCEAN_SIZE = 10;
     private final static int EXPECTED_SHIPS_SIZE = 3;
-    private final static int EXPECTED_NUM_OF_BATTLESHIPS = 2;
-    private final static int EXPECTED_NUM_OF_DESTROYERS = 1;
+    private final static int EXPECTED_NUM_OF_BATTLESHIPS = 1;
+    private final static int EXPECTED_NUM_OF_DESTROYERS = 2;
 
     GameUnit gameUnit;
 
