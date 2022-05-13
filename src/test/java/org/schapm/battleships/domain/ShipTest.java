@@ -12,14 +12,16 @@ public class ShipTest {
 
     private final static int EXPECTED_BATTLESHIP_LENGTH = 5;
     private final static int EXPECTED_DESTROYER_LENGTH = 4;
+    private final static String BATTLESHIP_NAME = "Battleship";
+    private final static String DESTROYER_NAME = "Destroyer";
 
-    Battleship battleship;
-    Destroyer destroyer;
+    Ship battleship;
+    Ship destroyer;
 
     @BeforeEach
     public void setupShips() {
-        battleship = new Battleship();
-        destroyer = new Destroyer();
+        battleship = new Ship(BATTLESHIP_NAME, EXPECTED_BATTLESHIP_LENGTH);
+        destroyer = new Ship(DESTROYER_NAME, EXPECTED_DESTROYER_LENGTH);
     }
 
     @Test
@@ -50,8 +52,8 @@ public class ShipTest {
     public void shipsHaveRandomOrientation() {
         Set<Ship.Orientation> set = new HashSet<>();
         for (int i = 0; i < 10; i++) {
-            Ship b = new Battleship();
-            Ship d = new Destroyer();
+            Ship b = new Ship(BATTLESHIP_NAME, EXPECTED_BATTLESHIP_LENGTH);
+            Ship d = new Ship(DESTROYER_NAME, EXPECTED_DESTROYER_LENGTH);
 
             set.add(d.getOrientation());
             set.add(b.getOrientation());

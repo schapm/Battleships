@@ -58,11 +58,11 @@ public class GameUnitTest {
         int destroyers = 0;
 
         for (ShipInterface ship : ships) {
-            if (ship instanceof Battleship) {
+            if (ship.getLength() == 5) {
                 battleships++;
             }
 
-            if (ship instanceof Destroyer) {
+            if (ship.getLength() == 4) {
                 destroyers++;
             }
         }

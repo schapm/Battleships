@@ -33,7 +33,7 @@ public class CoordinateTest {
         coordinate.setValue(Coordinate.MISS);
         assertEquals(Coordinate.MISS, coordinate.getValue(), "After setting the coordinate value to 'MISS', it does not have the same value");
 
-        Destroyer destroyer = new Destroyer();
+        Ship destroyer = new Ship("Destroyer", 4);
         coordinate.setValue(destroyer.getNameInitial());
         assertEquals(String.valueOf(destroyer.getNameInitial()), coordinate.getValue(), "After setting the coordinate value to destroyer ship initial 'D', it does not have the same value");
     }
@@ -47,7 +47,7 @@ public class CoordinateTest {
 
     @Test
     public void coordinateCanHaveAShip() {
-        Battleship battleship = new Battleship();
+        Ship battleship = new Ship("Battleship", 5);
         coordinate.setShip(battleship);
 
         assertNotNull(coordinate.getShip(), "Coordinate ship should not be null");
@@ -58,7 +58,7 @@ public class CoordinateTest {
     public void coordinateReturnsStatusOfShip() {
         assertFalse(coordinate.hasShip(), "Coordinate should return false when no ship has been set");
 
-        coordinate.setShip(new Battleship());
+        coordinate.setShip(new Ship("Battleship", 5));
         assertTrue(coordinate.hasShip(), "Coordinate should return true after the ship has been set");
     }
 

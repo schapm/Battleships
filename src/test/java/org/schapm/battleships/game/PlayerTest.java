@@ -85,7 +85,7 @@ public class PlayerTest {
         coordinate.setShip(null);
         assertEquals(Coordinate.MISS, game.opponent.guessOutcome(coordinate), "No ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'MISS'");
 
-        coordinate.setShip(new Destroyer());
+        coordinate.setShip(new Ship("Destroyer", 4));
         assertEquals(Coordinate.HIT, game.opponent.guessOutcome(coordinate), "Ship set on guess coordinate - " + COMPUTER_PLAYER_NAME + " guess should be equal to the value of 'HIT'");
     }
 
